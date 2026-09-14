@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--Process the logic for each device with index and indirect addressing.-->
-<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="DeviceLogic" TargetType="Routine" TargetSubType="RLL" ContainsContext="true" ExportDate="Mon Sep 14 13:53:07 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="DeviceLogic" TargetType="Routine" TargetSubType="RLL" ContainsContext="true" ExportDate="Mon Sep 14 15:45:42 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
 <Controller Use="Context" Name="Transcat_L33ER">
 <DataTypes Use="Context">
 <DataType Name="Device" Family="NoFamily" Class="User">
@@ -270,6 +270,11 @@
 <![CDATA[Tells the system device is in auto,  but will needd fresh reestart to start when transitioning from manual back to Auto]]>
 </Description>
 </Member>
+<Member Name="HMI_DeviceReset" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDevice50" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[A bit that will be used to clear all interlocks and faultss specific to one device]]>
+</Description>
+</Member>
 </Members>
 </DataType>
 </DataTypes>
@@ -368,10 +373,10 @@
 <![CDATA[Auto mode active]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[0]]>
+<![CDATA[1]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
 </Data>
 </Tag>
 <Tag Name="Device" TagType="Base" DataType="Device" Dimensions="20" Constant="false" ExternalAccess="Read/Write">
@@ -472,24 +477,24 @@
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,1.50000000e+002,0.00000000e+000,0,0,0,0.00000000e+000,[929483,288000000,19476
-		],[2467916,288000000,39951],[929483,288000000,44103055],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1201151,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-1.34201035e+002,[0,1000,0],0.00000000e+000,8],[0.00000000e+000,0.00000000e+000
+		],0.00000000e+000,0,1.50000000e+002,0.00000000e+000,0,0,0,0.00000000e+000,[1751726,288000000,18296
+		],[2467916,288000000,39951],[1751726,288000000,44734620],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1751726,1000,0],1,0,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-8.39801025e+000,[0,1000,0],0.00000000e+000,8],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[1878961,288000000,3942
-		],[2467917,288000000,39952],[1878961,288000000,32545747],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1878961,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-6.12739143e+001,[3380575,1000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[4133032,288000000,11267
+		],[2467917,288000000,39952],[4133032,288000000,32897213],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[4133032,1000,0],1,0,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-2.28907600e+001,[3380575,1000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[1879889,288000000,4869
-		],[2467917,288000000,39951],[1879889,288000000,41318168],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1879889,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,1.22761869e+000,[1823356,1000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[4133032,288000000,11271
+		],[2467917,288000000,39951],[4133032,288000000,41567477],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[4133032,1000,0],1,0,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,5.37580967e-001,[1823356,1000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
@@ -698,6 +703,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[1]">
@@ -844,6 +850,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[2]">
@@ -990,6 +997,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[3]">
@@ -1136,6 +1144,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[4]">
@@ -1282,6 +1291,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[5]">
@@ -1428,6 +1438,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[6]">
@@ -1574,6 +1585,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[7]">
@@ -1620,7 +1632,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="19476"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="18296"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -1634,7 +1646,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="44103055"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="44734620"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -1704,7 +1716,7 @@
 </StructureMember>
 <DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
 <DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-134.20103"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-8.39801"/>
 <StructureMember Name="ErrorTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -1720,6 +1732,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[8]">
@@ -1766,7 +1779,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="3942"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="11267"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -1780,7 +1793,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="32545747"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="32897213"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -1850,7 +1863,7 @@
 </StructureMember>
 <DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
 <DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-61.273914"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-22.89076"/>
 <StructureMember Name="ErrorTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -1866,6 +1879,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[9]">
@@ -1912,7 +1926,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="4869"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="11271"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -1926,7 +1940,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="41318168"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="41567477"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -1996,7 +2010,7 @@
 </StructureMember>
 <DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
 <DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="1.2276187"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="0.53758097"/>
 <StructureMember Name="ErrorTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -2012,6 +2026,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[10]">
@@ -2158,6 +2173,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[11]">
@@ -2304,6 +2320,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[12]">
@@ -2450,6 +2467,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[13]">
@@ -2596,6 +2614,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[14]">
@@ -2742,6 +2761,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[15]">
@@ -2888,6 +2908,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[16]">
@@ -3034,6 +3055,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[17]">
@@ -3180,6 +3202,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[18]">
@@ -3326,6 +3349,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[19]">
@@ -3472,6 +3496,7 @@
 <DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 </Structure>
 </Element>
 </Array>
@@ -3482,10 +3507,10 @@
 <![CDATA[The index of the current device being processed]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[0]]>
+<![CDATA[1]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="1"/>
 </Data>
 </Tag>
 <Tag Name="HMI_AllReset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -3548,7 +3573,7 @@
 <![CDATA[Timer to sound the beep alarm before starting a device]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[[1879890,2500,0]]]>
+<![CDATA[[1751727,2500,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="TIMER">
@@ -3630,7 +3655,7 @@
 <![CDATA[arms a device only when you issue a fresh global Auto Start:]]>
 </Comment>
 <Text>
-<![CDATA[XIC(HMI_AutoStart)XIC(Device[dNum].AutoMan)OTU(Device[dNum].AutoArmed);]]>
+<![CDATA[XIC(HMI_AutoStart)XIC(Device[dNum].AutoMan)OTL(Device[dNum].AutoArmed);]]>
 </Text>
 </Rung>
 <Rung Number="5" Type="N">
@@ -3656,7 +3681,7 @@
 <![CDATA[clear AutoArmed whenever the automatic run is deliberately terminated or faulted.]]>
 </Comment>
 <Text>
-<![CDATA[[XIC(HMI_AutoStop) ,[XIC(HMI_AllReset) ,XIC(Auto_Run_All_Interlock) ] ]OTE(Device[dNum].AutoArmed);]]>
+<![CDATA[[XIC(HMI_AutoStop) ,[XIC(HMI_AllReset) ,XIC(Auto_Run_All_Interlock) ] ]OTU(Device[dNum].AutoArmed);]]>
 </Text>
 </Rung>
 <Rung Number="9" Type="N">
