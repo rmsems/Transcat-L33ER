@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="Transcat_L33ER" TargetType="Controller" ContainsContext="false" ExportDate="Mon Sep 14 12:08:29 2026" ExportOptions="NoRawData L5KData DecoratedData ForceProtectedEncoding AllProjDocTrans">
-<Controller Use="Target" Name="Transcat_L33ER" ProcessorType="1769-L33ER" MajorRev="32" MinorRev="11" TimeSlice="20" ShareUnusedTimeSlice="1" ProjectCreationDate="Mon Jun 24 14:28:57 2024" LastModifiedDate="Mon Sep 14 12:07:55 2026" SFCExecutionControl="CurrentActive" SFCRestartPosition="MostRecent"
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="Transcat_L33ER" TargetType="Controller" ContainsContext="false" ExportDate="Fri Sep 18 11:28:55 2026" ExportOptions="NoRawData L5KData DecoratedData ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Target" Name="Transcat_L33ER" ProcessorType="1769-L33ER" MajorRev="32" MinorRev="11" TimeSlice="20" ShareUnusedTimeSlice="1" ProjectCreationDate="Mon Jun 24 14:28:57 2024" LastModifiedDate="Fri Sep 18 11:28:29 2026" SFCExecutionControl="CurrentActive" SFCRestartPosition="MostRecent"
  SFCLastScan="DontScan" ProjectSN="16#60ea_b613" MatchProjectToController="false" CanUseRPIFromProducer="false" InhibitAutomaticFirmwareUpdate="0" PassThroughConfiguration="EnabledWithAppend" DownloadProjectDocumentationAndExtendedProperties="true" DownloadProjectCustomProperties="true" ReportMinorOverflow="false">
 <Description>
 <![CDATA[Upgraded CPLX to handle up to 32 EIP Nodes]]>
@@ -115,6 +115,22 @@
 <Member Name="RPM" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
 <Description>
 <![CDATA[RPM of shaft]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZAcrison_Fe23" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="VFDCommsIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZAcrison_Fe23" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD comms failure interlock]]>
+</Description>
+</Member>
+<Member Name="VFDNotReadyIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZAcrison_Fe23" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD not ready interlock]]>
+</Description>
+</Member>
+<Member Name="VFDFaultIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZAcrison_Fe23" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD faulted interlock]]>
 </Description>
 </Member>
 </Members>
@@ -644,6 +660,42 @@
 <![CDATA[A bit to enable a device to run in Auto with other devices in Auto]]>
 </Description>
 </Member>
+<Member Name="HMI_AutoSelect" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDevice50" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Select auto mode for device]]>
+</Description>
+</Member>
+<Member Name="HMI_ManualSelect" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDevice50" BitNumber="5" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Select manual mode for device]]>
+</Description>
+</Member>
+<Member Name="AutoArmed" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDevice50" BitNumber="6" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Tells the system device is in auto,  but will needd fresh reestart to start when transitioning from manual back to Auto]]>
+</Description>
+</Member>
+<Member Name="HMI_DeviceReset" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDevice50" BitNumber="7" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[A bit that will be used to clear all interlocks and faultss specific to one device]]>
+</Description>
+</Member>
+<Member Name="VFDEntryStatus" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Word that containsthe status of the VFD - including comms and other stuff]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZDevice60" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="VFDCommsOK" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZDevice60" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[the VFD comms are working / OK]]>
+</Description>
+</Member>
+<Member Name="InterlockID" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[value that hold  the unique value for the type of interlock active - for use in displaying interlocks on HMI]]>
+</Description>
+</Member>
 </Members>
 </DataType>
 <DataType Name="Howes_Mixer" Family="NoFamily" Class="User">
@@ -755,6 +807,32 @@
 <![CDATA[RPM from speed sensor]]>
 </Description>
 </Member>
+<Member Name="ZZZZZZZZZZHowes_Mixe23" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LidInterlock" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZHowes_Mixe23" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Mixer Lid Interlock]]>
+</Description>
+</Member>
+<Member Name="DevErrorInterlock" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZHowes_Mixe23" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Mixer Speed Deviation Interlock]]>
+</Description>
+</Member>
+<Member Name="VFDCommsIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZHowes_Mixe23" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD comms failure interlock]]>
+</Description>
+</Member>
+<Member Name="VFDNotReadyIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZHowes_Mixe23" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD not ready interlock]]>
+</Description>
+</Member>
+<Member Name="VFDFaultIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZHowes_Mixe23" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD faulted interlock]]>
+</Description>
+</Member>
 </Members>
 </DataType>
 <DataType Name="Thayer_WB_Feeder" Family="NoFamily" Class="User">
@@ -848,6 +926,26 @@
 <Member Name="TimeRunStart" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZThayer_WB_18" BitNumber="0" ExternalAccess="Read/Write">
 <Description>
 <![CDATA[Bit to start and run a timed run]]>
+</Description>
+</Member>
+<Member Name="ExcessDevInterlock" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZThayer_WB_18" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[This bit get set when the deviation error exceed a limit (usually 10%)for greater than the limit timeoout (usually 30 sec)]]>
+</Description>
+</Member>
+<Member Name="VFDCommsIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZThayer_WB_18" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD comms failure interlock]]>
+</Description>
+</Member>
+<Member Name="VFDNotReadyIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZThayer_WB_18" BitNumber="3" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD not ready interlock]]>
+</Description>
+</Member>
+<Member Name="VFDFaultIntlk" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZThayer_WB_18" BitNumber="4" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[VFD faulted interlock]]>
 </Description>
 </Member>
 </Members>
@@ -2570,7 +2668,7 @@
 <Data Format="Decorated">
 <Structure DataType="AB:ETHERNET_MODULE_INT_244Bytes:I:0">
 <ArrayMember Name="Data" DataType="INT" Dimensions="122" Radix="Decimal">
-<Element Index="[0]" Value="16642"/>
+<Element Index="[0]" Value="258"/>
 <Element Index="[1]" Value="1024"/>
 <Element Index="[2]" Value="0"/>
 <Element Index="[3]" Value="0"/>
@@ -2586,7 +2684,7 @@
 <Element Index="[13]" Value="0"/>
 <Element Index="[14]" Value="0"/>
 <Element Index="[15]" Value="0"/>
-<Element Index="[16]" Value="-3"/>
+<Element Index="[16]" Value="-5"/>
 <Element Index="[17]" Value="-1"/>
 <Element Index="[18]" Value="-2"/>
 <Element Index="[19]" Value="0"/>
@@ -2603,19 +2701,19 @@
 <Element Index="[30]" Value="-3"/>
 <Element Index="[31]" Value="0"/>
 <Element Index="[32]" Value="0"/>
-<Element Index="[33]" Value="-73"/>
+<Element Index="[33]" Value="-126"/>
 <Element Index="[34]" Value="0"/>
 <Element Index="[35]" Value="0"/>
 <Element Index="[36]" Value="0"/>
-<Element Index="[37]" Value="-73"/>
+<Element Index="[37]" Value="-126"/>
 <Element Index="[38]" Value="0"/>
 <Element Index="[39]" Value="0"/>
 <Element Index="[40]" Value="0"/>
-<Element Index="[41]" Value="711"/>
+<Element Index="[41]" Value="694"/>
 <Element Index="[42]" Value="-1"/>
 <Element Index="[43]" Value="0"/>
 <Element Index="[44]" Value="0"/>
-<Element Index="[45]" Value="16879"/>
+<Element Index="[45]" Value="16862"/>
 <Element Index="[46]" Value="-1"/>
 <Element Index="[47]" Value="0"/>
 <Element Index="[48]" Value="0"/>
@@ -2627,13 +2725,13 @@
 <Element Index="[54]" Value="0"/>
 <Element Index="[55]" Value="0"/>
 <Element Index="[56]" Value="0"/>
-<Element Index="[57]" Value="5277"/>
+<Element Index="[57]" Value="4856"/>
 <Element Index="[58]" Value="1"/>
-<Element Index="[59]" Value="-3"/>
+<Element Index="[59]" Value="-5"/>
 <Element Index="[60]" Value="-1"/>
-<Element Index="[61]" Value="-21621"/>
-<Element Index="[62]" Value="5"/>
-<Element Index="[63]" Value="704"/>
+<Element Index="[61]" Value="23692"/>
+<Element Index="[62]" Value="6"/>
+<Element Index="[63]" Value="706"/>
 <Element Index="[64]" Value="-1"/>
 <Element Index="[65]" Value="15"/>
 <Element Index="[66]" Value="0"/>
@@ -2642,8 +2740,8 @@
 <Element Index="[69]" Value="0"/>
 <Element Index="[70]" Value="0"/>
 <Element Index="[71]" Value="2002"/>
-<Element Index="[72]" Value="269"/>
-<Element Index="[73]" Value="5924"/>
+<Element Index="[72]" Value="273"/>
+<Element Index="[73]" Value="5689"/>
 <Element Index="[74]" Value="0"/>
 <Element Index="[75]" Value="0"/>
 <Element Index="[76]" Value="0"/>
@@ -2652,8 +2750,8 @@
 <Element Index="[79]" Value="0"/>
 <Element Index="[80]" Value="0"/>
 <Element Index="[81]" Value="0"/>
-<Element Index="[82]" Value="-17131"/>
-<Element Index="[83]" Value="8030"/>
+<Element Index="[82]" Value="-17025"/>
+<Element Index="[83]" Value="26692"/>
 <Element Index="[84]" Value="0"/>
 <Element Index="[85]" Value="0"/>
 <Element Index="[86]" Value="0"/>
@@ -2670,10 +2768,10 @@
 <Element Index="[97]" Value="0"/>
 <Element Index="[98]" Value="0"/>
 <Element Index="[99]" Value="0"/>
-<Element Index="[100]" Value="17038"/>
-<Element Index="[101]" Value="11079"/>
+<Element Index="[100]" Value="17034"/>
+<Element Index="[101]" Value="-13281"/>
 <Element Index="[102]" Value="17618"/>
-<Element Index="[103]" Value="-907"/>
+<Element Index="[103]" Value="-14718"/>
 <Element Index="[104]" Value="0"/>
 <Element Index="[105]" Value="0"/>
 <Element Index="[106]" Value="0"/>
@@ -2682,16 +2780,16 @@
 <Element Index="[109]" Value="0"/>
 <Element Index="[110]" Value="0"/>
 <Element Index="[111]" Value="0"/>
-<Element Index="[112]" Value="-17128"/>
-<Element Index="[113]" Value="26652"/>
-<Element Index="[114]" Value="17036"/>
-<Element Index="[115]" Value="-18022"/>
+<Element Index="[112]" Value="-17023"/>
+<Element Index="[113]" Value="602"/>
+<Element Index="[114]" Value="17037"/>
+<Element Index="[115]" Value="11469"/>
 <Element Index="[116]" Value="0"/>
 <Element Index="[117]" Value="0"/>
 <Element Index="[118]" Value="0"/>
 <Element Index="[119]" Value="0"/>
-<Element Index="[120]" Value="-17131"/>
-<Element Index="[121]" Value="8030"/>
+<Element Index="[120]" Value="-17025"/>
+<Element Index="[121]" Value="26692"/>
 </ArrayMember>
 </Structure>
 </Data>
@@ -3738,7 +3836,7 @@
 <Data Format="Decorated">
 <Structure DataType="AB:ETHERNET_MODULE_INT_244Bytes:I:0">
 <ArrayMember Name="Data" DataType="INT" Dimensions="122" Radix="Decimal">
-<Element Index="[0]" Value="16642"/>
+<Element Index="[0]" Value="258"/>
 <Element Index="[1]" Value="1024"/>
 <Element Index="[2]" Value="0"/>
 <Element Index="[3]" Value="0"/>
@@ -3754,7 +3852,7 @@
 <Element Index="[13]" Value="0"/>
 <Element Index="[14]" Value="0"/>
 <Element Index="[15]" Value="0"/>
-<Element Index="[16]" Value="275"/>
+<Element Index="[16]" Value="269"/>
 <Element Index="[17]" Value="0"/>
 <Element Index="[18]" Value="-2"/>
 <Element Index="[19]" Value="0"/>
@@ -3771,19 +3869,19 @@
 <Element Index="[30]" Value="-3"/>
 <Element Index="[31]" Value="0"/>
 <Element Index="[32]" Value="0"/>
-<Element Index="[33]" Value="5574"/>
+<Element Index="[33]" Value="5458"/>
 <Element Index="[34]" Value="0"/>
 <Element Index="[35]" Value="0"/>
 <Element Index="[36]" Value="0"/>
-<Element Index="[37]" Value="5574"/>
+<Element Index="[37]" Value="5458"/>
 <Element Index="[38]" Value="0"/>
 <Element Index="[39]" Value="0"/>
 <Element Index="[40]" Value="0"/>
-<Element Index="[41]" Value="7143"/>
+<Element Index="[41]" Value="3099"/>
 <Element Index="[42]" Value="-2"/>
 <Element Index="[43]" Value="0"/>
 <Element Index="[44]" Value="2"/>
-<Element Index="[45]" Value="-23117"/>
+<Element Index="[45]" Value="-16149"/>
 <Element Index="[46]" Value="-2"/>
 <Element Index="[47]" Value="0"/>
 <Element Index="[48]" Value="0"/>
@@ -3795,11 +3893,11 @@
 <Element Index="[54]" Value="0"/>
 <Element Index="[55]" Value="0"/>
 <Element Index="[56]" Value="0"/>
-<Element Index="[57]" Value="-14376"/>
+<Element Index="[57]" Value="-16136"/>
 <Element Index="[58]" Value="3"/>
-<Element Index="[59]" Value="275"/>
+<Element Index="[59]" Value="269"/>
 <Element Index="[60]" Value="0"/>
-<Element Index="[61]" Value="16990"/>
+<Element Index="[61]" Value="-32093"/>
 <Element Index="[62]" Value="6"/>
 <Element Index="[63]" Value="706"/>
 <Element Index="[64]" Value="-1"/>
@@ -3807,11 +3905,11 @@
 <Element Index="[66]" Value="0"/>
 <Element Index="[67]" Value="0"/>
 <Element Index="[68]" Value="0"/>
-<Element Index="[69]" Value="1089"/>
-<Element Index="[70]" Value="1089"/>
+<Element Index="[69]" Value="1093"/>
+<Element Index="[70]" Value="1093"/>
 <Element Index="[71]" Value="2026"/>
-<Element Index="[72]" Value="2318"/>
-<Element Index="[73]" Value="2827"/>
+<Element Index="[72]" Value="2322"/>
+<Element Index="[73]" Value="2591"/>
 <Element Index="[74]" Value="0"/>
 <Element Index="[75]" Value="0"/>
 <Element Index="[76]" Value="0"/>
@@ -3820,8 +3918,8 @@
 <Element Index="[79]" Value="0"/>
 <Element Index="[80]" Value="0"/>
 <Element Index="[81]" Value="0"/>
-<Element Index="[82]" Value="16431"/>
-<Element Index="[83]" Value="-12974"/>
+<Element Index="[82]" Value="16428"/>
+<Element Index="[83]" Value="10549"/>
 <Element Index="[84]" Value="0"/>
 <Element Index="[85]" Value="0"/>
 <Element Index="[86]" Value="0"/>
@@ -3838,10 +3936,10 @@
 <Element Index="[97]" Value="0"/>
 <Element Index="[98]" Value="0"/>
 <Element Index="[99]" Value="0"/>
-<Element Index="[100]" Value="17038"/>
-<Element Index="[101]" Value="-8945"/>
-<Element Index="[102]" Value="17624"/>
-<Element Index="[103]" Value="-8953"/>
+<Element Index="[100]" Value="16887"/>
+<Element Index="[101]" Value="-2997"/>
+<Element Index="[102]" Value="17633"/>
+<Element Index="[103]" Value="-27953"/>
 <Element Index="[104]" Value="0"/>
 <Element Index="[105]" Value="0"/>
 <Element Index="[106]" Value="0"/>
@@ -3850,16 +3948,16 @@
 <Element Index="[109]" Value="0"/>
 <Element Index="[110]" Value="0"/>
 <Element Index="[111]" Value="0"/>
-<Element Index="[112]" Value="16431"/>
-<Element Index="[113]" Value="-12860"/>
+<Element Index="[112]" Value="16428"/>
+<Element Index="[113]" Value="10515"/>
 <Element Index="[114]" Value="17037"/>
 <Element Index="[115]" Value="11469"/>
 <Element Index="[116]" Value="0"/>
 <Element Index="[117]" Value="0"/>
 <Element Index="[118]" Value="0"/>
 <Element Index="[119]" Value="0"/>
-<Element Index="[120]" Value="16431"/>
-<Element Index="[121]" Value="-12974"/>
+<Element Index="[120]" Value="16428"/>
+<Element Index="[121]" Value="10549"/>
 </ArrayMember>
 </Structure>
 </Data>
@@ -3995,7 +4093,7 @@
 </InputTag>
 <OutputTag ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[-61,-1,[0,0,0,-95,0,0]]]]>
+<![CDATA[[-61,-1,[0,0,0,-63,0,0]]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="AB:1734_6SLOT:O:0">
@@ -4003,7 +4101,7 @@
 <Element Index="[0]" Value="2#0000_0000"/>
 <Element Index="[1]" Value="2#0000_0000"/>
 <Element Index="[2]" Value="2#0000_0000"/>
-<Element Index="[3]" Value="2#1010_0001"/>
+<Element Index="[3]" Value="2#1100_0001"/>
 <Element Index="[4]" Value="2#0000_0000"/>
 <Element Index="[5]" Value="2#0000_0000"/>
 </ArrayMember>
@@ -4124,9 +4222,9 @@
 <Data Format="Decorated">
 <Structure DataType="AB:1734_IE8:I:0">
 <DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
-<DataValueMember Name="Ch0Data" DataType="INT" Radix="Decimal" Value="40"/>
-<DataValueMember Name="Ch1Data" DataType="INT" Radix="Decimal" Value="66"/>
-<DataValueMember Name="Ch2Data" DataType="INT" Radix="Decimal" Value="55"/>
+<DataValueMember Name="Ch0Data" DataType="INT" Radix="Decimal" Value="61"/>
+<DataValueMember Name="Ch1Data" DataType="INT" Radix="Decimal" Value="44"/>
+<DataValueMember Name="Ch2Data" DataType="INT" Radix="Decimal" Value="22"/>
 <DataValueMember Name="Ch3Data" DataType="INT" Radix="Decimal" Value="-11"/>
 <DataValueMember Name="Ch4Data" DataType="INT" Radix="Decimal" Value="-8"/>
 <DataValueMember Name="Ch5Data" DataType="INT" Radix="Decimal" Value="-10"/>
@@ -4722,7 +4820,7 @@
 </Comment>
 </Comments>
 <Data Format="L5K">
-<![CDATA[[1,667,1000,1000]]]>
+<![CDATA[[1,1667,1000,1000]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="AB:PowerFlex525V_E_5483BAFD:O:0">
@@ -4743,7 +4841,7 @@
 <DataValueMember Name="FreqSel02" DataType="BOOL" Value="0"/>
 <DataValueMember Name="FreqSel03" DataType="BOOL" Value="0"/>
 <DataValueMember Name="MOPDecrement" DataType="BOOL" Value="0"/>
-<DataValueMember Name="FreqCommand" DataType="INT" Radix="Decimal" Value="667"/>
+<DataValueMember Name="FreqCommand" DataType="INT" Radix="Decimal" Value="1667"/>
 <DataValueMember Name="AccelTime1" DataType="INT" Radix="Decimal" Value="1000"/>
 <DataValueMember Name="DecelTime1" DataType="INT" Radix="Decimal" Value="1000"/>
 </Structure>
@@ -4981,7 +5079,7 @@
 </Comment>
 </Comments>
 <Data Format="L5K">
-<![CDATA[[1,667]]]>
+<![CDATA[[1,1667]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="AB:PowerFlex525V_EENET_Drive:O:0">
@@ -5002,7 +5100,7 @@
 <DataValueMember Name="FreqSel02" DataType="BOOL" Value="0"/>
 <DataValueMember Name="FreqSel03" DataType="BOOL" Value="0"/>
 <DataValueMember Name="MOPDecrement" DataType="BOOL" Value="0"/>
-<DataValueMember Name="FreqCommand" DataType="INT" Radix="Decimal" Value="667"/>
+<DataValueMember Name="FreqCommand" DataType="INT" Radix="Decimal" Value="1667"/>
 </Structure>
 </Data>
 </OutputTag>
@@ -5011,6 +5109,247 @@
 </Communications>
 <ExtendedProperties>
 <public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>PowerFlex 525-EENET</CatNum><LgxVersion>32</LgxVersion><UdcAopVersion>5.2.0.18</UdcAopVersion><ConnectedCommModule>0</ConnectedCommModule><PrimaryModulePort>0</PrimaryModulePort><ConfigCode>200</ConfigCode><PortName>PF525_A</PortName><PortDescription/><ConfigID>115</ConfigID></public>
+</ExtendedProperties>
+</Module>
+<Module Name="GF101_Limestone_Feeder" CatalogNumber="PowerFlex 525-EENET" Vendor="1" ProductType="150" ProductCode="9" Major="5" Minor="2" ParentModule="Local" ParentModPortId="2" Inhibited="false" MajorFault="false"
+ DrivesADCMode="true" DrivesADCEnabled="false" SafetyEnabled="false">
+<Description>
+<![CDATA[VFD for Thayer1 Weigh Belt Feeder]]>
+</Description>
+<EKey State="CompatibleModule"/>
+<Ports>
+<Port Id="1" Address="0" Type="DSI" Upstream="false">
+<Bus/>
+</Port>
+<Port Id="2" Address="192.168.1.194" Type="Ethernet" Upstream="true"/>
+</Ports>
+<Communications CommMethod="536870913">
+<ConfigData ConfigSize="58">
+<Data Format="L5K">
+<![CDATA[[62,0,6,0,1,0,196,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]]>
+</Data>
+</ConfigData>
+<ConfigScript Size="8552">
+<Data Format="L5K">
+<![CDATA[[100,33,0,0,4,0,0,0,0,0,0,0,0,0,0,0,25,0,0,0,8,-106,0,0,0,1,0,0,0,1,0,0,0,8,0,0,0,75,2,32,-110,36,0,-1,-1,0,0,0,-77,32,0,0,8,30,0,0,0,1,0,0,0,1
+		,0,0,0,9,0,0,0,16,3,32,-109,36,0,48,2,3,1,0,0,0,10,0,0,0,16,3,32,-109,36,30,48,9,1,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,31,48,9,-52,1,1,0
+		,0,0,10,0,0,0,16,3,32,-109,36,32,48,9,60,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,33,48,9,23,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,34,48,9,15
+		,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,35,48,9,4,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,36,48,9,-42,6,1,0,0,0,10,0,0,0,16,3,32,-109,36,37,48
+		,9,75,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,39,48,9,1,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,41,48,9,-24,3,1,0,0,0,10,0,0,0,16,3,32,-109,36,42
+		,48,9,-24,3,1,0,0,0,10,0,0,0,16,3,32,-109,36,43,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,44,48,9,112,23,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,45,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,46,48,9,5,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,47,48,9,15,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,48,48,9,2,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,49,48,9,5,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,50,48,9,5,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,51,48,9,15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,52,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,62,48,9,48,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,63,48,9,50,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,64,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,65,48,9,7,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,66,48,9,7,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,67,48,9,5,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,68,48,9,9,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,69,48,9,2,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,70,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,71,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,72,48,9,1,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,73,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,74,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,75,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,76,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,77,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,78,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,79,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,80,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,81,48,9,2,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,82,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,83,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,84,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,85,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,86,48,9,-56,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,87,48,9,-56,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,88,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,89,48,9,100,0,1,0,0,0,10,0,0,0,16,3,32
+		,-109,36,91,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,92,48,9,-24,3,1,0,0,0,10,0,0,0,16,3,32,-109,36,93,48,9,0,0,1,0,0,0,10,0,0,0,16,3
+		,32,-109,36,94,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,95,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,96,48,9,-24,3,1,0,0,0,10,0,0,0,16
+		,3,32,-109,36,97,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,98,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,99,48,9,0,0,1,0,0,0,10,0,0,0,16
+		,3,32,-109,36,100,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,101,48,9,100,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,102,48,9,0,0,1,0,0,0,10
+		,0,0,0,16,3,32,-109,36,103,48,9,-106,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,104,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,105,48,9,0,0
+		,1,0,0,0,10,0,0,0,16,3,32,-109,36,106,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,121,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,122,48
+		,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,123,48,9,3,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,124,48,9,100,0,1,0,0,0,10,0,0,0,16,3,32,-109,36
+		,125,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,126,48,9,50,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,127,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,-128,48,9,2,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-127,48,9,-64,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-126,48,9,-88,0,1,0,0,0,10,0,0
+		,0,16,3,32,-109,36,-125,48,9,1,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-124,48,9,-62,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-123,48,9,0,0
+		,1,0,0,0,10,0,0,0,16,3,32,-109,36,-122,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-121,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-120
+		,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-119,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-118,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,-117,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-116,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-115,48,9,0,0,1,0,0,0,10,0,0,0,16,3
+		,32,-109,36,-113,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-112,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-111,48,9,0,0,1,0,0,0,10
+		,0,0,0,16,3,32,-109,36,-110,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-109,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-108,48,9,0,0
+		,1,0,0,0,10,0,0,0,16,3,32,-109,36,-107,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-106,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-103
+		,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-102,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-101,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,-100,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-99,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-98,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32
+		,-109,36,-97,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-96,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-95,48,9,0,0,1,0,0,0,10,0,0,0,16
+		,3,32,-109,36,-94,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-93,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-92,48,9,0,0,1,0,0,0,10,0,0
+		,0,16,3,32,-109,36,-91,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-90,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-89,48,9,0,0,1,0,0,0,10
+		,0,0,0,16,3,32,-109,36,-88,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-87,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-85,48,9,2,0,1,0,0
+		,0,10,0,0,0,16,3,32,-109,36,-84,48,9,3,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-83,48,9,4,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-82,48,9,5,0
+		,1,0,0,0,10,0,0,0,16,3,32,-109,36,-81,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-76,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-75
+		,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-74,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-73,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32
+		,-109,36,-72,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-71,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-70,48,9,-15,0,1,0,0,0,10
+		,0,0,0,16,3,32,-109,36,-69,48,9,-15,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-66,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-65,48,9,44
+		,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-64,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-63,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-62
+		,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-61,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-60,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109
+		,36,-59,48,9,44,1,1,0,0,0,10,0,0,0,16,3,32,-109,36,-56,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-55,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32
+		,-109,36,-54,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-53,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-52,48,9,0,0,1,0,0,0,10,0,0,0,16
+		,3,32,-109,36,-51,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-50,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-49,48,9,0,0,1,0,0,0,10,0,0
+		,0,16,3,32,-109,36,-48,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-47,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-46,48,9,0,0,1,0,0,0,10
+		,0,0,0,16,3,32,-109,36,-45,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-44,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-43,48,9,0,0,1,0,0
+		,0,10,0,0,0,16,3,32,-109,36,-42,48,9,0,0,1,0,0,0,10,0,0,0,16,3,32,-109,36,-41,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-102,1,48
+		,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-101,1,48,9,-12,1,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-100,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4
+		,32,-109,37,0,-99,1,48,9,-48,7,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-98,1,48,9,-72,11,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-97,1,48,9
+		,-96,15,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-96,1,48,9,-120,19,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-95,1,48,9,112,23,1,0,0,0,12,0,0,0
+		,16,4,32,-109,37,0,-94,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-93,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-92
+		,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-91,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-90,1,48,9,112,23,1,0,0,0,12
+		,0,0,0,16,4,32,-109,37,0,-89,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-88,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0
+		,-87,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-86,1,48,9,112,23,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-85,1,48,9,112,23,1,0,0
+		,0,12,0,0,0,16,4,32,-109,37,0,-84,1,48,9,1,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-83,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-82
+		,1,48,9,100,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-81,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-80,1,48,9,-24,3,1,0,0,0,12,0,0,0
+		,16,4,32,-109,37,0,-79,1,48,9,-12,1,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-78,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-77,1,48,9
+		,1,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-76,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-75,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,-74,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-73,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-72,1,48,9,40,0,1,0,0,0,12,0,0
+		,0,16,4,32,-109,37,0,-71,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-70,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-69,1,48
+		,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-68,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-67,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4
+		,32,-109,37,0,-66,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-65,1,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-64,1,48,9,0
+		,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-63,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-62,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,-61,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-60,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-59,1,48,9,0,0,1,0,0,0,12,0,0,0,16
+		,4,32,-109,37,0,-58,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-57,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-56,1,48,9,88,2,1
+		,0,0,0,12,0,0,0,16,4,32,-109,37,0,-55,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-54,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-53
+		,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-52,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-51,1,48,9,1,0,1,0,0,0,12,0,0,0,16,4,32,-109
+		,37,0,-50,1,48,9,20,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-49,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-48,1,48,9,0,0,1,0,0,0,12,0,0
+		,0,16,4,32,-109,37,0,-47,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-46,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-45,1,48,9,0
+		,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-44,1,48,9,88,2,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-43,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,-42,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-41,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-40,1,48,9,0,0,1,0,0,0,12,0,0,0,16
+		,4,32,-109,37,0,-39,1,48,9,1,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-38,1,48,9,20,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-37,1,48,9,0,0,1
+		,0,0,0,12,0,0,0,16,4,32,-109,37,0,-36,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-35,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-34
+		,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-33,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-31,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109
+		,37,0,-30,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-29,1,48,9,0,4,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-28,1,48,9,35,0,1,0,0,0,12,0,0
+		,0,16,4,32,-109,37,0,-27,1,48,9,25,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-26,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-25,1,48,9
+		,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-24,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-23,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,-22,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-21,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-20,1,48,9,0,0,1,0,0,0,12,0,0,0,16
+		,4,32,-109,37,0,-19,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-18,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-17,1,48,9,3,0,1,0
+		,0,0,12,0,0,0,16,4,32,-109,37,0,-16,1,48,9,-126,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-15,1,48,9,75,0,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,-14,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-13,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-12,1,48,9,0,0,1,0,0,0,12,0,0,0,16
+		,4,32,-109,37,0,-11,1,48,9,126,4,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-10,1,48,9,-1,6,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-9,1,48,9,-55
+		,20,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-8,1,48,9,-48,12,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-3,1,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109
+		,37,0,-2,1,48,9,65,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,-1,1,48,9,10,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,0,2,48,9,-36,5,1,0,0,0,12,0,0,0
+		,16,4,32,-109,37,0,1,2,48,9,10,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,2,2,48,9,-48,7,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,3,2,48,9,10,0,1,0
+		,0,0,12,0,0,0,16,4,32,-109,37,0,4,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,5,2,48,9,30,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,6,2,48,9
+		,7,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,7,2,48,9,100,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,8,2,48,9,2,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0
+		,9,2,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,10,2,48,9,100,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,11,2,48,9,-24,3,1,0,0,0,12,0,0,0,16
+		,4,32,-109,37,0,12,2,48,9,100,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,13,2,48,9,-24,3,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,14,2,48,9,100
+		,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,15,2,48,9,94,1,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,16,2,48,9,44,1,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,17,2,48,9,7,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,18,2,48,9,8,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,19,2,48,9,25,0,1,0,0,0,12,0,0,0,16,4,32
+		,-109,37,0,20,2,48,9,-6,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,21,2,48,9,-106,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,22,2,48,9,-52,1,1,0
+		,0,0,12,0,0,0,16,4,32,-109,37,0,23,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,24,2,48,9,0,4,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,25,2,48
+		,9,64,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,26,2,48,9,20,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,27,2,48,9,5,0,1,0,0,0,12,0,0,0,16,4,32,-109
+		,37,0,28,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,29,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,30,2,48,9,10,0,1,0,0,0,12,0,0,0,16
+		,4,32,-109,37,0,31,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,32,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,33,2,48,9,0,0,1,0,0,0,12
+		,0,0,0,16,4,32,-109,37,0,34,2,48,9,65,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,35,2,48,9,1,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,36,2,48,9,0
+		,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,37,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,38,2,48,9,1,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,40
+		,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,41,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,42,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109
+		,37,0,44,2,48,9,2,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,45,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,46,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4
+		,32,-109,37,0,47,2,48,9,0,16,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,48,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,49,2,48,9,0,0,1,0,0,0,12
+		,0,0,0,16,4,32,-109,37,0,50,2,48,9,100,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,51,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,52,2,48,9
+		,100,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,53,2,48,9,8,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,54,2,48,9,30,0,1,0,0,0,12,0,0,0,16,4,32,-109
+		,37,0,55,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,56,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,57,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4
+		,32,-109,37,0,58,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,59,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,60,2,48,9,100,0,1,0,0,0
+		,12,0,0,0,16,4,32,-109,37,0,61,2,48,9,3,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,62,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,63,2,48,9
+		,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,64,2,48,9,-6,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,68,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37
+		,0,69,2,48,9,0,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,70,2,48,9,45,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,71,2,48,9,40,0,1,0,0,0,12,0,0,0,16,4
+		,32,-109,37,0,72,2,48,9,-6,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,73,2,48,9,40,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,74,2,48,9,0,0,1,0,0,0
+		,12,0,0,0,16,4,32,-109,37,0,75,2,48,9,120,0,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,76,2,48,9,-12,1,1,0,0,0,12,0,0,0,16,4,32,-109,37,0,77
+		,2,48,9,0,0,1,0,0,0,37,0,0,0,16,3,32,-99,36,1,48,1,-127,0,99,42,0,18,1,1,0,1,0,16,0,67,117,115,116,111,109,32,71,114,111,117,112
+		,32,32,32,32,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,7,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,8,0,0,0,0,1,0,0,0,14,0,0,0,16
+		,4,32,-108,37,0,18,1,48,9,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,10,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,11,0
+		,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,12,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,13,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32
+		,-108,37,0,18,1,48,14,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,15,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,16,0,0,0
+		,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,17,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,18,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108
+		,37,0,18,1,48,19,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,20,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,21,0,0,0,0,1,0,0
+		,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,22,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,23,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37
+		,0,18,1,48,24,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,25,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,26,0,0,0,0,1,0,0,0,14
+		,0,0,0,16,4,32,-108,37,0,18,1,48,27,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,28,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18
+		,1,48,29,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,30,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,31,0,0,0,0,1,0,0,0,14,0,0
+		,0,16,4,32,-108,37,0,18,1,48,32,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,33,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48
+		,34,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,35,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,36,0,0,0,0,1,0,0,0,14,0,0,0,16
+		,4,32,-108,37,0,18,1,48,37,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,38,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,39
+		,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,40,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,41,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32
+		,-108,37,0,18,1,48,42,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,43,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,44,0,0,0
+		,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,45,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,46,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108
+		,37,0,18,1,48,47,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,48,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,49,0,0,0,0,1,0,0
+		,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,50,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,51,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37
+		,0,18,1,48,52,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,53,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,54,0,0,0,0,1,0,0,0,14
+		,0,0,0,16,4,32,-108,37,0,18,1,48,55,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,56,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18
+		,1,48,57,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,58,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,59,0,0,0,0,1,0,0,0,14,0,0
+		,0,16,4,32,-108,37,0,18,1,48,60,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,61,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48
+		,62,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,63,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,64,0,0,0,0,1,0,0,0,14,0,0,0,16
+		,4,32,-108,37,0,18,1,48,65,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,66,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,67
+		,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,68,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,69,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32
+		,-108,37,0,18,1,48,70,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,71,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,72,0,0,0
+		,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,73,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,74,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108
+		,37,0,18,1,48,75,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,76,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,77,0,0,0,0,1,0,0
+		,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,78,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,79,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37
+		,0,18,1,48,80,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,81,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,82,0,0,0,0,1,0,0,0,14
+		,0,0,0,16,4,32,-108,37,0,18,1,48,83,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,84,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18
+		,1,48,85,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,86,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,87,0,0,0,0,1,0,0,0,14,0,0
+		,0,16,4,32,-108,37,0,18,1,48,88,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,89,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48
+		,90,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,91,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,92,0,0,0,0,1,0,0,0,14,0,0,0,16
+		,4,32,-108,37,0,18,1,48,93,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,94,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,95
+		,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,96,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,97,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32
+		,-108,37,0,18,1,48,98,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,99,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,100,0,0
+		,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,101,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,102,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32
+		,-108,37,0,18,1,48,103,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,104,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,105
+		,0,0,0,0,1,0,0,0,14,0,0,0,16,4,32,-108,37,0,18,1,48,106,0,0,0,0,1,0,0,0,28,0,0,0,16,3,32,-110,36,0,48,31,1,0,16,0,32,32,32,32,32,32,32
+		,32,32,32,32,32,32,32,32,32,0,45,0,0,0,8,100,0,0,0,1,0,0,0,6,0,0,0,24,0,0,0,16,3,32,-110,36,0,48,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,64,0,0,0
+		,0,0,0,34,0,0,0,8,61,0,0,0,1,0,0,0,1,0,0,0,9,0,0,0,16,3,32,-105,36,0,48,3,3,3,0,0,0,-120,19,0,0,0,0,29,0,0,0,0,100,0,0,0,2,0,0,0,-128,0,0,0,-103
+		,-113,-52,82,52,-79,-15,17,-69,-89,0,21,93,0,66,2,0,0,0]]]>
+</Data>
+</ConfigScript>
+<Connections>
+<Connection Name="Standard" RPI="20000" Type="Output" InputCxnPoint="1" OutputCxnPoint="2" OutputSize="4" InputSize="8" EventID="0" ProgrammaticallySendEventTrigger="false" Unicast="true">
+<InputTag ExternalAccess="Read/Write">
+<Data Format="Decorated">
+<Structure DataType="AB:PowerFlex525V_EENET_Drive:I:0">
+<DataValueMember Name="DriveStatus" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_1101"/>
+<DataValueMember Name="Ready" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Active" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CommandDir" DataType="BOOL" Value="1"/>
+<DataValueMember Name="ActualDir" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Accelerating" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Decelerating" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Faulted" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AtReference" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CommFreqCnt" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CommLogicCnt" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ParmsLocked" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DigIn1Active" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DigIn2Active" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DigIn3Active" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DigIn4Active" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OutputFreq" DataType="INT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</InputTag>
+<OutputTag ExternalAccess="Read/Write">
+<Data Format="L5K">
+<![CDATA[[0,0]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="AB:PowerFlex525V_EENET_Drive:O:0">
+<DataValueMember Name="LogicCommand" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_0000"/>
+<DataValueMember Name="Stop" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Start" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Jog" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ClearFaults" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Forward" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Reverse" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ForceKeypadCtrl" DataType="BOOL" Value="0"/>
+<DataValueMember Name="MOPIncrement" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AccelRate1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AccelRate2" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DecelRate1" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DecelRate2" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FreqSel01" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FreqSel02" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FreqSel03" DataType="BOOL" Value="0"/>
+<DataValueMember Name="MOPDecrement" DataType="BOOL" Value="0"/>
+<DataValueMember Name="FreqCommand" DataType="INT" Radix="Decimal" Value="0"/>
+</Structure>
+</Data>
+</OutputTag>
+</Connection>
+</Connections>
+</Communications>
+<ExtendedProperties>
+<public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>PowerFlex 525-EENET</CatNum><LgxVersion>32</LgxVersion><UdcAopVersion>16.5.0.11225</UdcAopVersion><ConnectedCommModule>0</ConnectedCommModule><PrimaryModulePort>0</PrimaryModulePort><ConfigCode>196</ConfigCode><PortName>PF525_A</PortName><PortDescription/><ConfigID>115</ConfigID></public>
 </ExtendedProperties>
 </Module>
 <Module Name="GF201_Bentonite_Feeder" CatalogNumber="PowerFlex 525-EENET" Vendor="1" ProductType="150" ProductCode="9" Major="5" Minor="1" ParentModule="Local" ParentModPortId="2" Inhibited="false" MajorFault="false"
@@ -5200,14 +5539,14 @@
 <InputTag ExternalAccess="Read/Write">
 <Data Format="Decorated">
 <Structure DataType="AB:PowerFlex525V_EENET_Drive:I:0">
-<DataValueMember Name="DriveStatus" DataType="INT" Radix="Binary" Value="2#0000_0000_1000_1100"/>
-<DataValueMember Name="Ready" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DriveStatus" DataType="INT" Radix="Binary" Value="2#0000_0000_0000_1101"/>
+<DataValueMember Name="Ready" DataType="BOOL" Value="1"/>
 <DataValueMember Name="Active" DataType="BOOL" Value="0"/>
 <DataValueMember Name="CommandDir" DataType="BOOL" Value="1"/>
 <DataValueMember Name="ActualDir" DataType="BOOL" Value="1"/>
 <DataValueMember Name="Accelerating" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Decelerating" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Faulted" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Faulted" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AtReference" DataType="BOOL" Value="0"/>
 <DataValueMember Name="CommFreqCnt" DataType="BOOL" Value="0"/>
 <DataValueMember Name="CommLogicCnt" DataType="BOOL" Value="0"/>
@@ -5977,8 +6316,8 @@
 <public><Vendor>Rockwell Automation/Allen-Bradley</Vendor><CatNum>PowerFlex 525-EENET</CatNum><LgxVersion>32</LgxVersion><UdcAopVersion>5.2.0.18</UdcAopVersion><ConnectedCommModule>0</ConnectedCommModule><PrimaryModulePort>0</PrimaryModulePort><ConfigCode>196</ConfigCode><PortName>PF525_A</PortName><PortDescription/><ConfigID>115</ConfigID></public>
 </ExtendedProperties>
 </Module>
-<Module Name="XS26_PLC_Safety_Controller" Vendor="12" ProductType="43" ProductCode="300" Major="2" Minor="1" ParentModule="Local" ParentModPortId="2" Inhibited="false" MajorFault="false" SafetyEnabled="false"
->
+<Module Name="XS26_PLC_Safety_Controller" CatalogNumber="XS26 SC26 SC10" Vendor="12" ProductType="43" ProductCode="300" Major="2" Minor="1" ParentModule="Local" ParentModPortId="2" Inhibited="false" MajorFault="false"
+ SafetyEnabled="false">
 <Description>
 <![CDATA[XS26 Safety Controller in PLC cabinet]]>
 </Description>
@@ -6037,8 +6376,8 @@
 <public><PL>01<Version Name="2.3"/><Connection Name="_200424802C702C64" Format="0"/></PL><Vendor>Banner Engineering Corporation</Vendor><CatNum>XS26 SC26 SC10</CatNum></public>
 </ExtendedProperties>
 </Module>
-<Module Name="XS26_VFD_Cabinet_Safety_Controller" Vendor="12" ProductType="43" ProductCode="300" Major="2" Minor="1" ParentModule="Local" ParentModPortId="2" Inhibited="false" MajorFault="false" SafetyEnabled="false"
->
+<Module Name="XS26_VFD_Cabinet_Safety_Controller" CatalogNumber="XS26 SC26 SC10" Vendor="12" ProductType="43" ProductCode="300" Major="2" Minor="1" ParentModule="Local" ParentModPortId="2" Inhibited="false" MajorFault="false"
+ SafetyEnabled="false">
 <Description>
 <![CDATA[Banner XS26 Safety Controller with 3 expansion modules in VFD cabinet]]>
 </Description>
@@ -6064,8 +6403,8 @@
 <DataValueMember Name="ConnectionFaulted" DataType="BOOL" Value="0"/>
 <ArrayMember Name="Data" DataType="SINT" Dimensions="16" Radix="Decimal">
 <Element Index="[0]" Value="-128"/>
-<Element Index="[1]" Value="-33"/>
-<Element Index="[2]" Value="15"/>
+<Element Index="[1]" Value="-37"/>
+<Element Index="[2]" Value="59"/>
 <Element Index="[3]" Value="0"/>
 <Element Index="[4]" Value="0"/>
 <Element Index="[5]" Value="0"/>
@@ -6342,10 +6681,10 @@
 <![CDATA[A bit to enable or disable the running of all devices]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[1]]>
+<![CDATA[0]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
 </Data>
 </Tag>
 <Tag Name="AllReset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -6383,6 +6722,17 @@
 <DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
 </Data>
 </Tag>
+<Tag Name="AnyAutoDeviceInterlock" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Any device in Auto interlocked]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
 <Tag Name="AnyAutoRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
 <Description>
 <![CDATA[Bit that in on if ANY device is placed into Auto run (to signal pre-start beed)]]>
@@ -6403,6 +6753,17 @@
 </Data>
 <Data Format="Decorated">
 <DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyDeviceInterlock" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Any device is interlocked]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
 </Data>
 </Tag>
 <Tag Name="AnyManRunFlag" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -6454,10 +6815,10 @@
 <![CDATA[Auto mode active]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[1]]>
+<![CDATA[0]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
 </Data>
 </Tag>
 <Tag Name="AutoStartOS" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -6953,10 +7314,10 @@
 <![CDATA[Bronkhorst Data Index]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[356]]>
+<![CDATA[108]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="356"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="108"/>
 </Data>
 </Tag>
 <Tag Name="Device" TagType="Base" DataType="Device" Dimensions="20" Constant="false" ExternalAccess="Read/Write">
@@ -7008,134 +7369,135 @@
 <![CDATA[[[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,1.06000000e+001,0.00000000e+000,0,0,0,0.00000000e+000,[327798,288000000,3998
-		],[622748,288000000,20003],[327798,288000000,35952700],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],20,[327798,1000,0],1,0,0.00000000e+000
-		,0,20000,0,[3,1,10000,0,0,0,2583057,25088,981668463,0,0,1],3,0.00000000e+000,[325417,1000,0],0.00000000e+000
-		,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		],0.00000000e+000,16,1.06000000e+001,0.00000000e+000,0,0,0,0.00000000e+000,[482253,288000000,217779
+		],[622748,288000000,20003],[482253,288000000,36646910],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],16384,[482253,1000,0],1,0,0.00000000e+000
+		,0,16384000,1,[3,1,10000,0,0,0,2583057,25088,981668463,0,0,1],3,0.00000000e+000,[267916,1000,0],0.00000000e+000
+		,0,16384,1,22],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,1.06000000e+001,0.00000000e+000,0,0,0,0.00000000e+000,[327799,288000000,3999
-		],[622749,288000000,20004],[327799,288000000,29849279],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],20,[327799,1000,0],1,0,0.00000000e+000
-		,0,20000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[325494,60000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
+		],0.00000000e+000,0,1.06000000e+001,0.00000000e+000,0,0,0,0.00000000e+000,[482253,288000000,217779
+		],[622749,288000000,20004],[482253,288000000,30506038],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],20,[482253,1000,0],1,0,0.00000000e+000
+		,0,20000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[267594,60000,0],0.00000000e+000,0,16384,1,0],[0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[688617,288000000,11254
+		],[3403635,288000000,5003],[688617,288000000,22871637],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],5,[688617,1000,0],1,0,0.00000000e+000
+		,0,5000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-1.04072227e+002,[0,0,0],0.00000000e+000,0,16384,1,0],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[715837,288000000,4371
-		],[3403635,288000000,5003],[715837,288000000,22497901],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],5,[715837,1000,0],1,0,0.00000000e+000
-		,0,5000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-9.89298553e+001,[0,0,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[482253,288000000,217779
+		],[0,288000000,0],[482253,288000000,115890264],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],10,[482253,1000,0],1,0,0.00000000e+000,0,10000
+		,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,3.78047340e-002,[0,0,0],0.00000000e+000,0,16384,1,0],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[715838,288000000,4372
-		],[0,288000000,0],[715838,288000000,115659048],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],10,[715838,1000,0],1,0,0.00000000e+000,0,10000
-		,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-1.00000000e+002,[0,0,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000
-		,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[1957684,288000000,9975
 		],[0,288000000,0],[1957684,288000000,1550491],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],0,[1957684,1000,0],1,0,0.00000000e+000,0,0,0
-		,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[678560,288000000,4976
 		],[2467915,288000000,39951],[678560,288000000,12762696],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[678560,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000,0,16384,1,0],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[678560,288000000,2974
 		],[2467916,288000000,39952],[678560,288000000,6477554],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[678560,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000,0,16384,1,0],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,1.50000000e+002,0.00000000e+000,0,0,0,0.00000000e+000,[748878,288000000,5042
-		],[2467916,288000000,39951],[748878,288000000,44083575],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[748878,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-1.#INF0000e+000,[0,1000,0],0.00000000e+000,8],[0.00000000e+000,0.00000000e+000
+		],0.00000000e+000,16,1.50000000e+002,0.00000000e+000,0,0,0,0.00000000e+000,[1305014,288000000
+		,16644],[2467916,288000000,39951],[1305014,288000000,45368998],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1305014,1000,0],1,0,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-5.49593353e+000,[0,1000,0],0.00000000e+000,8,0,0,40],[0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[1670503,288000000,8525
-		],[2467917,288000000,39952],[1670503,288000000,32434245],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1670503,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,1.#INF0000e+000,[3380575,1000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[704879,288000000,755
+		],[2467917,288000000,39952],[704879,288000000,33474892],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[704879,1000,0],1,0,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-1.04687477e+002,[3380575,1000,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[1670503,288000000,8347
-		],[2467917,288000000,39951],[1670503,288000000,41198975],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[1670503,1000,0],1,0,0.00000000e+000
-		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,-1.#INF0000e+000,[1823356,1000,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[704880,288000000,756
+		],[2467917,288000000,39951],[704880,288000000,41946101],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],120,[704880,1000,0],1,0,0.00000000e+000
+		,0,120000,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,1.#INF0000e+000,[1823356,1000,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,288000000,0],[0,288000000
 		,0],[0,288000000,0],[2#0,2#0,2#1,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0
-		,0],0.00000000e+000,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0],0.00000000e+000,0,0,0,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[538532192,0,11],[0,0,0],[538532192
 		,0,7],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0],0,[1661280,1000,0],1,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000
-		,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		,0,0,0,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[537692790,0,3],[0,0,0],[537692790
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[537518015,0,4],[0,0,0],[537518015
 		,0,8],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0],0,[821878,1000,0],1,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000
-		,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		,2#0,2#0,2#0,2#0,2#0],0,[647103,1000,0],1,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000
+		,0,0,0,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[539108558,0,2],[0,0,0],[539108558
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[539370445,0,5],[0,0,0],[539370445
 		,0,8],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0],0,[2237646,1000,0],1,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000
-		,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+		,2#0,2#0,2#0,2#0,2#0],0,[2499533,1000,0],1,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],3,0.00000000e+000,[0,0,0],0.00000000e+000
+		,0,0,0,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
-		,2#1,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000
+		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#1,2#1,2#0
+		,2#1,2#1,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
+		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000
+		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000
+		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000
+		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0],[0.00000000e+000
+		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0],[0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0.00000000e+000,0,0.00000000e+000,0.00000000e+000,0,0,0,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0]]]]>
+		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,0,0,[1,0,0,0,0,0,0,0,0,4,0,0],0,0.00000000e+000,[0,0,0],0.00000000e+000,0,0,0,0]]]]>
 </Data>
 <Data Format="Decorated">
 <Array DataType="Device" Dimensions="20">
@@ -7170,7 +7532,7 @@
 <DataValueMember Name="AutoMan" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Interlock" DataType="BOOL" Value="1"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
 <DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="10.6"/>
 <DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
@@ -7183,7 +7545,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="3998"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="217779"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7197,7 +7559,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="35952700"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="36646910"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7236,7 +7598,7 @@
 <Element Index="[30]" Value="0"/>
 <Element Index="[31]" Value="0"/>
 </ArrayMember>
-<DataValueMember Name="TimedRunTarget" DataType="DINT" Radix="Decimal" Value="20"/>
+<DataValueMember Name="TimedRunTarget" DataType="DINT" Radix="Decimal" Value="16384"/>
 <StructureMember Name="StartDelay" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -7249,8 +7611,8 @@
 <DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="0.0"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TimedRunTargetms" DataType="DINT" Radix="Decimal" Value="20000"/>
-<DataValueMember Name="OutPutTest" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimedRunTargetms" DataType="DINT" Radix="Decimal" Value="16384000"/>
+<DataValueMember Name="OutPutTest" DataType="BOOL" Value="1"/>
 <StructureMember Name="StartDelay_ST_Timer" DataType="FBD_TIMER">
 <DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
 <DataValueMember Name="TimerEnable" DataType="BOOL" Value="1"/>
@@ -7280,6 +7642,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="22"/>
 </Structure>
 </Element>
 <Element Index="[1]">
@@ -7326,7 +7695,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="3999"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="217779"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7340,7 +7709,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="29849279"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="30506038"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7423,6 +7792,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[2]">
@@ -7469,7 +7845,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="4371"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="11254"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7483,7 +7859,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="22497901"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="22871637"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7553,7 +7929,7 @@
 </StructureMember>
 <DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
 <DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-98.929855"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-104.07223"/>
 <StructureMember Name="ErrorTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -7566,6 +7942,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[3]">
@@ -7612,7 +7995,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="4372"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="217779"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7626,7 +8009,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="115659048"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="115890264"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -7696,7 +8079,7 @@
 </StructureMember>
 <DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
 <DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-100.0"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="0.037804734"/>
 <StructureMember Name="ErrorTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -7709,6 +8092,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[4]">
@@ -7852,6 +8242,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[5]">
@@ -7995,6 +8392,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[6]">
@@ -8138,6 +8542,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[7]">
@@ -8171,7 +8582,7 @@
 <DataValueMember Name="AutoMan" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Interlock" DataType="BOOL" Value="1"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
 <DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="150.0"/>
 <DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
@@ -8184,7 +8595,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="5042"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="16644"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -8198,7 +8609,7 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="44083575"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="45368998"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -8268,7 +8679,7 @@
 </StructureMember>
 <DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
 <DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-1.$"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-5.4959335"/>
 <StructureMember Name="ErrorTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
 <DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -8281,6 +8692,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="40"/>
 </Structure>
 </Element>
 <Element Index="[8]">
@@ -8327,7 +8745,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="8525"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="755"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -8341,7 +8759,157 @@
 </StructureMember>
 <StructureMember Name="TotalTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="32434245"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="33474892"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</StructureMember>
+<ArrayMember Name="OneShots" DataType="BOOL" Dimensions="32" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+<Element Index="[7]" Value="0"/>
+<Element Index="[8]" Value="0"/>
+<Element Index="[9]" Value="0"/>
+<Element Index="[10]" Value="0"/>
+<Element Index="[11]" Value="0"/>
+<Element Index="[12]" Value="0"/>
+<Element Index="[13]" Value="0"/>
+<Element Index="[14]" Value="0"/>
+<Element Index="[15]" Value="0"/>
+<Element Index="[16]" Value="0"/>
+<Element Index="[17]" Value="0"/>
+<Element Index="[18]" Value="0"/>
+<Element Index="[19]" Value="0"/>
+<Element Index="[20]" Value="0"/>
+<Element Index="[21]" Value="0"/>
+<Element Index="[22]" Value="0"/>
+<Element Index="[23]" Value="0"/>
+<Element Index="[24]" Value="0"/>
+<Element Index="[25]" Value="0"/>
+<Element Index="[26]" Value="0"/>
+<Element Index="[27]" Value="0"/>
+<Element Index="[28]" Value="0"/>
+<Element Index="[29]" Value="0"/>
+<Element Index="[30]" Value="0"/>
+<Element Index="[31]" Value="0"/>
+</ArrayMember>
+<DataValueMember Name="TimedRunTarget" DataType="DINT" Radix="Decimal" Value="120"/>
+<StructureMember Name="StartDelay" DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</StructureMember>
+<DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="TimeRunEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TimedRunTargetms" DataType="DINT" Radix="Decimal" Value="120000"/>
+<DataValueMember Name="OutPutTest" DataType="BOOL" Value="0"/>
+<StructureMember Name="StartDelay_ST_Timer" DataType="FBD_TIMER">
+<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TimerEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Reset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Status" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
+<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
+<DataValueMember Name="PresetInv" DataType="BOOL" Value="0"/>
+</StructureMember>
+<DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
+<DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-104.68748"/>
+<StructureMember Name="ErrorTimer" DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</StructureMember>
+<DataValueMember Name="ErrorLimit" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="HMI_ManualStart" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
+<DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="Device">
+<DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="0.0"/>
+<StructureMember Name="Usertag" DataType="STRING">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<DataValueMember Name="FBNode" DataType="INT" Radix="Decimal" Value="0"/>
+<StructureMember Name="Model" DataType="STRING">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<StructureMember Name="Serial" DataType="STRING">
+<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
+<![CDATA[]]>
+</DataValueMember>
+</StructureMember>
+<DataValueMember Name="Capacity" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Enable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoMan" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Output" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Connected" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Alarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Running" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
+<StructureMember Name="CycleTime" DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="756"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</StructureMember>
+<StructureMember Name="CampTime" DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="39951"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</StructureMember>
+<StructureMember Name="TotalTime" DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="41946101"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
@@ -8424,149 +8992,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
-</Structure>
-</Element>
-<Element Index="[9]">
-<Structure DataType="Device">
-<DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="0.0"/>
-<StructureMember Name="Usertag" DataType="STRING">
-<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
-<![CDATA[]]>
-</DataValueMember>
-</StructureMember>
-<DataValueMember Name="FBNode" DataType="INT" Radix="Decimal" Value="0"/>
-<StructureMember Name="Model" DataType="STRING">
-<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
-<![CDATA[]]>
-</DataValueMember>
-</StructureMember>
-<StructureMember Name="Serial" DataType="STRING">
-<DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
-<![CDATA[]]>
-</DataValueMember>
-</StructureMember>
-<DataValueMember Name="Capacity" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="Enable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AutoMan" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AutoRun" DataType="BOOL" Value="0"/>
-<DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Output" DataType="BOOL" Value="0"/>
-<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="Connected" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Alarm" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Running" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
-<StructureMember Name="CycleTime" DataType="TIMER">
-<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="8347"/>
-<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
-</StructureMember>
-<StructureMember Name="CampTime" DataType="TIMER">
-<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="39951"/>
-<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
-</StructureMember>
-<StructureMember Name="TotalTime" DataType="TIMER">
-<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="41198975"/>
-<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
-</StructureMember>
-<ArrayMember Name="OneShots" DataType="BOOL" Dimensions="32" Radix="Decimal">
-<Element Index="[0]" Value="0"/>
-<Element Index="[1]" Value="0"/>
-<Element Index="[2]" Value="0"/>
-<Element Index="[3]" Value="0"/>
-<Element Index="[4]" Value="0"/>
-<Element Index="[5]" Value="0"/>
-<Element Index="[6]" Value="0"/>
-<Element Index="[7]" Value="0"/>
-<Element Index="[8]" Value="0"/>
-<Element Index="[9]" Value="0"/>
-<Element Index="[10]" Value="0"/>
-<Element Index="[11]" Value="0"/>
-<Element Index="[12]" Value="0"/>
-<Element Index="[13]" Value="0"/>
-<Element Index="[14]" Value="0"/>
-<Element Index="[15]" Value="0"/>
-<Element Index="[16]" Value="0"/>
-<Element Index="[17]" Value="0"/>
-<Element Index="[18]" Value="0"/>
-<Element Index="[19]" Value="0"/>
-<Element Index="[20]" Value="0"/>
-<Element Index="[21]" Value="0"/>
-<Element Index="[22]" Value="0"/>
-<Element Index="[23]" Value="0"/>
-<Element Index="[24]" Value="0"/>
-<Element Index="[25]" Value="0"/>
-<Element Index="[26]" Value="0"/>
-<Element Index="[27]" Value="0"/>
-<Element Index="[28]" Value="0"/>
-<Element Index="[29]" Value="0"/>
-<Element Index="[30]" Value="0"/>
-<Element Index="[31]" Value="0"/>
-</ArrayMember>
-<DataValueMember Name="TimedRunTarget" DataType="DINT" Radix="Decimal" Value="120"/>
-<StructureMember Name="StartDelay" DataType="TIMER">
-<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
-</StructureMember>
-<DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="1"/>
-<DataValueMember Name="TimeRunEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TimedRunTargetms" DataType="DINT" Radix="Decimal" Value="120000"/>
-<DataValueMember Name="OutPutTest" DataType="BOOL" Value="0"/>
-<StructureMember Name="StartDelay_ST_Timer" DataType="FBD_TIMER">
-<DataValueMember Name="EnableIn" DataType="BOOL" Value="1"/>
-<DataValueMember Name="TimerEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="Reset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="EnableOut" DataType="BOOL" Value="0"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Status" DataType="DINT" Radix="Hex" Value="16#0000_0000"/>
-<DataValueMember Name="InstructFault" DataType="BOOL" Value="0"/>
-<DataValueMember Name="PresetInv" DataType="BOOL" Value="0"/>
-</StructureMember>
-<DataValueMember Name="PermissivesAuto" DataType="BOOL" Value="1"/>
-<DataValueMember Name="PermissivesMan" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Error" DataType="REAL" Radix="Float" Value="-1.$"/>
-<StructureMember Name="ErrorTimer" DataType="TIMER">
-<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
-</StructureMember>
-<DataValueMember Name="ErrorLimit" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="HMI_ManualStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
-<DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[10]">
@@ -8710,6 +9142,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[11]">
@@ -8853,6 +9292,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[12]">
@@ -8899,7 +9345,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="3"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="4"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="1"/>
@@ -8996,6 +9442,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[13]">
@@ -9042,7 +9495,7 @@
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="2"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="5"/>
 <DataValueMember Name="EN" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TT" DataType="BOOL" Value="0"/>
 <DataValueMember Name="DN" DataType="BOOL" Value="1"/>
@@ -9139,6 +9592,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[14]">
@@ -9205,11 +9665,11 @@
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
 </StructureMember>
 <ArrayMember Name="OneShots" DataType="BOOL" Dimensions="32" Radix="Decimal">
-<Element Index="[0]" Value="0"/>
-<Element Index="[1]" Value="0"/>
+<Element Index="[0]" Value="1"/>
+<Element Index="[1]" Value="1"/>
 <Element Index="[2]" Value="0"/>
 <Element Index="[3]" Value="1"/>
-<Element Index="[4]" Value="0"/>
+<Element Index="[4]" Value="1"/>
 <Element Index="[5]" Value="0"/>
 <Element Index="[6]" Value="0"/>
 <Element Index="[7]" Value="0"/>
@@ -9282,6 +9742,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[15]">
@@ -9425,6 +9892,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[16]">
@@ -9568,6 +10042,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[17]">
@@ -9711,6 +10192,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[18]">
@@ -9854,6 +10342,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[19]">
@@ -9997,6 +10492,13 @@
 <DataValueMember Name="HMI_ManualStop" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RunRequest" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoEnable" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_AutoSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_ManualSelect" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AutoArmed" DataType="BOOL" Value="0"/>
+<DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="0"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 </Array>
@@ -10029,10 +10531,10 @@
 <![CDATA[The index of the current device being processed]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[11]]>
+<![CDATA[14]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="11"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="14"/>
 </Data>
 </Tag>
 <Tag Name="DoseCounter" TagType="Base" DataType="COUNTER" Constant="false" ExternalAccess="Read/Write">
@@ -10118,6 +10620,61 @@
 </Data>
 <Data Format="Decorated">
 <DataValue DataType="REAL" Radix="Float" Value="27.9"/>
+</Data>
+</Tag>
+<Tag Name="EstopActive" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[E]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="EStopResetArmed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Remembers that Banner entered the waiting-for-reset state]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="EStopResetPulse" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[One-scan pulse used to clear all 14 E-stop interlocks - allows reset of estop interlocks from physical reset button on VFD panel]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="EStopResetRequired" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Indicates that an estop was actived and it's awaiting reset]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="EStopReset_OS" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Storage bit required by the ONS instruction]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
 </Data>
 </Tag>
 <Tag Name="FT103" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
@@ -10267,19 +10824,19 @@
 </Tag>
 <Tag Name="FT103B" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0.00000000e+000,-1.22839522e+000,0.00000000e+000,2.55978241e+001,9.99900000e+003,[6,'FT-103$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+<![CDATA[[0.00000000e+000,7.82630463e+001,0.00000000e+000,2.64849987e+001,9.99900000e+003,[6,'FT-103$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],13,[14,'M55-RGD-25-0-S$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[10,'M22213015A$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],1.00000006e+003,0,1.23000000e+002,0.00000000e+000,1,0,63,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
+		],1.00000006e+003,0,2.00000000e+002,0.00000000e+000,3,40,111,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,0.00000000e+000,0,4.00000000e+001,4000,2,[0,2000,0],64,0,3,30]]]>
+		,2#0,2#0,2#0],0,[0,0,0],0,0,1.37946469e+005,2,2.00000000e+001,2000,2,[291689,2000,0],32,0,3,108]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="BronkhorstFlowMeter">
 <DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="-1.2283952"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="78.26305"/>
 <DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="25.597824"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="26.484999"/>
 <DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="9999.0"/>
 <StructureMember Name="Usertag" DataType="STRING">
 <DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="6"/>
@@ -10307,14 +10864,14 @@
 <DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
-<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="123.0"/>
+<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="200.0"/>
 <DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
 <DataValueMember Name="Connected" DataType="BOOL" Value="1"/>
-<DataValueMember Name="Alarm" DataType="BOOL" Value="0"/>
+<DataValueMember Name="Alarm" DataType="BOOL" Value="1"/>
 <DataValueMember Name="Running" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="63"/>
+<DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="40"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="111"/>
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -10381,11 +10938,11 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="137946.47"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="40.0"/>
-<DataValueMember Name="HighPressureLimit_Int" DataType="DINT" Radix="Decimal" Value="4000"/>
+<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="HighPressureLimit_Int" DataType="DINT" Radix="Decimal" Value="2000"/>
 <DataValueMember Name="HighPressureTime" DataType="DINT" Radix="Decimal" Value="2"/>
 <StructureMember Name="HighPressureTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2000"/>
@@ -10399,13 +10956,13 @@
 <DataValueMember Name="TotalResetDone" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalResetError" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmResetCmd" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AlarmResetDone" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AlarmResetError" DataType="BOOL" Value="1"/>
+<DataValueMember Name="AlarmResetDone" DataType="BOOL" Value="1"/>
+<DataValueMember Name="AlarmResetError" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalResetAttempts" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="CommOK" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataValid" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataStale" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="30"/>
+<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="108"/>
 </Structure>
 </Data>
 </Tag>
@@ -10556,20 +11113,20 @@
 </Tag>
 <Tag Name="FT104B" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0.00000000e+000,6.25427666e+001,0.00000000e+000,2.55033226e+001,9.99900000e+003,[16,'FT-104          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+<![CDATA[[0.00000000e+000,6.15686607e+001,0.00000000e+000,2.67674370e+001,9.99899900e+003,[16,'FT-104          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],14,[14,'M55-RGD-25-0-S$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[10,'M22213015C$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],1.00000000e+004,0,1.00000000e+003,0.00000000e+000,1,0,48,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
+		],1.00000000e+004,0,1.00000000e+003,0.00000000e+000,1,0,96,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,1.31517000e+003,0,8.99999976e-001,90,1,[1664244,1000,0],0,0,3,172]]]>
+		,2#0,2#0],0,[0,0,0],0,0,1.48348875e+005,2,2.00000000e+001,2000,1,[3503311,1000,0],0,0,3,140]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="BronkhorstFlowMeter">
 <DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="62.542767"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="61.56866"/>
 <DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="25.503323"/>
-<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="9999.0"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="26.767437"/>
+<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="9998.999"/>
 <StructureMember Name="Usertag" DataType="STRING">
 <DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="16"/>
 <DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
@@ -10603,7 +11160,7 @@
 <DataValueMember Name="Running" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="48"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="96"/>
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -10670,11 +11227,11 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="1315.17"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="148348.88"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="0.9"/>
-<DataValueMember Name="HighPressureLimit_Int" DataType="DINT" Radix="Decimal" Value="90"/>
+<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="HighPressureLimit_Int" DataType="DINT" Radix="Decimal" Value="2000"/>
 <DataValueMember Name="HighPressureTime" DataType="DINT" Radix="Decimal" Value="1"/>
 <StructureMember Name="HighPressureTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
@@ -10694,7 +11251,7 @@
 <DataValueMember Name="CommOK" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataValid" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataStale" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="172"/>
+<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="140"/>
 </Structure>
 </Data>
 </Tag>
@@ -10845,20 +11402,20 @@
 </Tag>
 <Tag Name="FT105B" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0.00000000e+000,4.42559779e-001,0.00000000e+000,2.97709160e+001,1.00461884e+003,[16,'FT-105          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+<![CDATA[[0.00000000e+000,5.93636990e-001,0.00000000e+000,3.33305130e+001,9.99569336e+002,[16,'FT-105          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],15,[14,'M14-RGD-22-0-S$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[10,'M20210127A$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],2.02799988e+002,0,1.00000000e+002,0.00000000e+000,1,0,47,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
+		],2.02799988e+002,0,1.50000000e+002,0.00000000e+000,1,0,48,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,5.99900017e+001,0,8.00000000e-001,80,1,[1665044,1000,0],68,1,3,46]]]>
+		,2#0,2#0],0,[0,0,0],0,0,4.48383008e+003,2,2.00000000e+001,2000,1,[1158617,1000,0],64,0,3,295]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="BronkhorstFlowMeter">
 <DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="0.44255978"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="0.593637"/>
 <DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="29.770916"/>
-<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="1004.61884"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="33.330513"/>
+<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="999.56934"/>
 <StructureMember Name="Usertag" DataType="STRING">
 <DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="16"/>
 <DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
@@ -10885,14 +11442,14 @@
 <DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
-<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="100.0"/>
+<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="150.0"/>
 <DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
 <DataValueMember Name="Connected" DataType="BOOL" Value="1"/>
 <DataValueMember Name="Alarm" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Running" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="47"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="48"/>
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -10959,11 +11516,11 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="59.99"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="4483.83"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="0"/>
-<DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="0.8"/>
-<DataValueMember Name="HighPressureLimit_Int" DataType="DINT" Radix="Decimal" Value="80"/>
+<DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="1"/>
+<DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="HighPressureLimit_Int" DataType="DINT" Radix="Decimal" Value="2000"/>
 <DataValueMember Name="HighPressureTime" DataType="DINT" Radix="Decimal" Value="1"/>
 <StructureMember Name="HighPressureTimer" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
@@ -10974,16 +11531,16 @@
 </StructureMember>
 <DataValueMember Name="HighPressureInterlock" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalResetCmd" DataType="BOOL" Value="0"/>
-<DataValueMember Name="TotalResetDone" DataType="BOOL" Value="1"/>
+<DataValueMember Name="TotalResetDone" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalResetError" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmResetCmd" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmResetDone" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmResetError" DataType="BOOL" Value="1"/>
-<DataValueMember Name="TotalResetAttempts" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="TotalResetAttempts" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="CommOK" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataValid" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataStale" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="46"/>
+<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="295"/>
 </Structure>
 </Data>
 </Tag>
@@ -11072,6 +11629,10 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="2"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ExcessDevInterlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -11287,6 +11848,10 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="2"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
+<DataValueMember Name="ExcessDevInterlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -11487,7 +12052,7 @@
 <![CDATA[[0,591992,1.00000000e+001,0.00000000e+000,1,0.00000000e+000,0.00000000e+000,[966926,288000000
 		,223848],[0,28800000,10001],[966926,999999999,2086091],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],0,[966926,2000,0],2,0,0.00000000e+000
-		]]]>
+		,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="Acrison_Feeder">
@@ -11568,6 +12133,9 @@
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="2"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RPM" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -11787,6 +12355,28 @@ Int - 1 / Ext - 0]]>
 <DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
 </Data>
 </Tag>
+<Tag Name="HMI_InterlockResetAll" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Resets ALL interlocks]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_ProcessReset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bit to clear the process hold/inteerlock when all other device interlocks are cleared]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
 <Tag Name="HMI_RecipeStart" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
 <Description>
 <![CDATA[Bit to start and stop recipe from HMI]]>
@@ -11831,10 +12421,10 @@ Int - 1 / Ext - 0]]>
 </Tag>
 <Tag Name="MX101" TagType="Base" DataType="Howes_Mixer" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0,0,2.00000000e+001,0.00000000e+000,1,6.67000008e+000,0.00000000e+000,[38039,288000000,4243
+<![CDATA[[0,0,5.00000000e+001,0.00000000e+000,1,1.66700000e+001,0.00000000e+000,[38039,288000000,4243
 		],[186635,28800000,10001],[38039,999999999,1803981],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],10000,0,[38039,2000,0],2,-1.19999997e-001
-		]]]>
+		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],10000,0,[38039,2000,0],2,-1.09999999e-001
+		,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="Howes_Mixer">
@@ -11844,10 +12434,10 @@ Int - 1 / Ext - 0]]>
 <DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Int_Status" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="50.0"/>
 <DataValueMember Name="SP_READ" DataType="REAL" Radix="Float" Value="0.0"/>
 <DataValueMember Name="Enable" DataType="BOOL" Value="1"/>
-<DataValueMember Name="FreqHz_Real" DataType="REAL" Radix="Float" Value="6.67"/>
+<DataValueMember Name="FreqHz_Real" DataType="REAL" Radix="Float" Value="16.67"/>
 <DataValueMember Name="OT_Actual_Hz" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="288000000"/>
@@ -11914,7 +12504,12 @@ Int - 1 / Ext - 0]]>
 <DataValueMember Name="DN" DataType="BOOL" Value="0"/>
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="2"/>
-<DataValueMember Name="RPM" DataType="REAL" Radix="Float" Value="-0.12"/>
+<DataValueMember Name="RPM" DataType="REAL" Radix="Float" Value="-0.11"/>
+<DataValueMember Name="LidInterlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevErrorInterlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -11936,23 +12531,23 @@ Int - 1 / Ext - 0]]>
 </Tag>
 <Tag Name="MX201" TagType="Base" DataType="Howes_Mixer" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[1,0,2.00000000e+001,0.00000000e+000,1,6.67000008e+000,0.00000000e+000,[1857643,28800000,117513
+<![CDATA[[0,0,5.00000000e+001,0.00000000e+000,1,1.66700000e+001,0.00000000e+000,[1857643,28800000,117513
 		],[186635,28800000,10001],[1857643,999999999,1030054],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],10000,0,[1857643,2000,0],2,-7.99999982e-002
-		]]]>
+		,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="Howes_Mixer">
-<DataValueMember Name="AutoMan" DataType="BOOL" Value="1"/>
+<DataValueMember Name="AutoMan" DataType="BOOL" Value="0"/>
 <DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Int_Status" DataType="DINT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
+<DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="50.0"/>
 <DataValueMember Name="SP_READ" DataType="REAL" Radix="Float" Value="0.0"/>
 <DataValueMember Name="Enable" DataType="BOOL" Value="1"/>
-<DataValueMember Name="FreqHz_Real" DataType="REAL" Radix="Float" Value="6.67"/>
+<DataValueMember Name="FreqHz_Real" DataType="REAL" Radix="Float" Value="16.67"/>
 <DataValueMember Name="OT_Actual_Hz" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="28800000"/>
@@ -12020,6 +12615,11 @@ Int - 1 / Ext - 0]]>
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="2"/>
 <DataValueMember Name="RPM" DataType="REAL" Radix="Float" Value="-0.08"/>
+<DataValueMember Name="LidInterlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DevErrorInterlock" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -12245,10 +12845,10 @@ Int - 1 / Ext - 0]]>
 <![CDATA[Bronkhorst Real Result Index]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[48]]>
+<![CDATA[14]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="48"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="14"/>
 </Data>
 </Tag>
 <Tag Name="rms" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -12264,7 +12864,7 @@ Int - 1 / Ext - 0]]>
 <![CDATA[Timer to sound the beep alarm before starting a device]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[[1670503,2500,0]]]>
+<![CDATA[[1305015,2500,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="TIMER">
@@ -12411,18 +13011,18 @@ Int - 1 / Ext - 0]]>
 </Comment>
 </Comments>
 <Data Format="L5K">
-<![CDATA[[-3.71093750e-002,2.17089158e-041,0.00000000e+000,1.80000000e+001,2.00000000e+000,0.00000000e+000
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,7.10000000e+001,1.68135242e+003,9.05645185e-041
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,-3.71093750e-002,7.02033386e+001,6.65812952e-041
-		,0.00000000e+000,-3.71093750e-002,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+<![CDATA[[-6.29882813e-002,2.13235587e-041,0.00000000e+000,1.80000000e+001,2.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,6.90000000e+001,1.68637878e+003,7.12111854e-041
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,-6.29882813e-002,7.05045929e+001,1.60714921e-041
+		,0.00000000e+000,-6.29882813e-002,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000]]]>
 </Data>
 <Data Format="Decorated">
 <Array DataType="REAL" Dimensions="40" Radix="Float">
-<Element Index="[0]" Value="-0.037109375"/>
-<Element Index="[1]" Value="2.17089158e-041"/>
+<Element Index="[0]" Value="-0.06298828"/>
+<Element Index="[1]" Value="2.13235587e-041"/>
 <Element Index="[2]" Value="0.0"/>
 <Element Index="[3]" Value="18.0"/>
 <Element Index="[4]" Value="2.0"/>
@@ -12430,17 +13030,17 @@ Int - 1 / Ext - 0]]>
 <Element Index="[6]" Value="0.0"/>
 <Element Index="[7]" Value="0.0"/>
 <Element Index="[8]" Value="0.0"/>
-<Element Index="[9]" Value="71.0"/>
-<Element Index="[10]" Value="1681.3524"/>
-<Element Index="[11]" Value="9.05645185e-041"/>
+<Element Index="[9]" Value="69.0"/>
+<Element Index="[10]" Value="1686.3788"/>
+<Element Index="[11]" Value="7.12111854e-041"/>
 <Element Index="[12]" Value="0.0"/>
 <Element Index="[13]" Value="0.0"/>
 <Element Index="[14]" Value="0.0"/>
-<Element Index="[15]" Value="-0.037109375"/>
-<Element Index="[16]" Value="70.20334"/>
-<Element Index="[17]" Value="6.65812952e-041"/>
+<Element Index="[15]" Value="-0.06298828"/>
+<Element Index="[16]" Value="70.50459"/>
+<Element Index="[17]" Value="1.60714921e-041"/>
 <Element Index="[18]" Value="0.0"/>
-<Element Index="[19]" Value="-0.037109375"/>
+<Element Index="[19]" Value="-0.06298828"/>
 <Element Index="[20]" Value="0.0"/>
 <Element Index="[21]" Value="0.0"/>
 <Element Index="[22]" Value="0.0"/>
@@ -12516,18 +13116,18 @@ Int - 1 / Ext - 0]]>
 </Tag>
 <Tag Name="Thayer2Data" TagType="Base" DataType="REAL" Dimensions="40" Radix="Float" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[2.73437500e+000,7.57822210e-041,0.00000000e+000,1.80000000e+001,0.00000000e+000,0.00000000e+000
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,7.10000000e+001,1.73490808e+003,7.92896710e-041
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.73437500e+000,7.09132462e+001,1.60714921e-041
-		,0.00000000e+000,2.73437500e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+<![CDATA[[2.68750000e+000,1.68870478e-041,0.00000000e+000,1.80000000e+001,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,3.08750000e+001,1.80763416e+003,5.26650000e-041
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.68750000e+000,7.05662842e+001,1.60714921e-041
+		,0.00000000e+000,2.68750000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000]]]>
 </Data>
 <Data Format="Decorated">
 <Array DataType="REAL" Dimensions="40" Radix="Float">
-<Element Index="[0]" Value="2.734375"/>
-<Element Index="[1]" Value="7.57822210e-041"/>
+<Element Index="[0]" Value="2.6875"/>
+<Element Index="[1]" Value="1.68870478e-041"/>
 <Element Index="[2]" Value="0.0"/>
 <Element Index="[3]" Value="18.0"/>
 <Element Index="[4]" Value="0.0"/>
@@ -12535,17 +13135,17 @@ Int - 1 / Ext - 0]]>
 <Element Index="[6]" Value="0.0"/>
 <Element Index="[7]" Value="0.0"/>
 <Element Index="[8]" Value="0.0"/>
-<Element Index="[9]" Value="71.0"/>
-<Element Index="[10]" Value="1734.9081"/>
-<Element Index="[11]" Value="7.92896710e-041"/>
+<Element Index="[9]" Value="30.875"/>
+<Element Index="[10]" Value="1807.6342"/>
+<Element Index="[11]" Value="5.26650000e-041"/>
 <Element Index="[12]" Value="0.0"/>
 <Element Index="[13]" Value="0.0"/>
 <Element Index="[14]" Value="0.0"/>
-<Element Index="[15]" Value="2.734375"/>
-<Element Index="[16]" Value="70.913246"/>
+<Element Index="[15]" Value="2.6875"/>
+<Element Index="[16]" Value="70.566284"/>
 <Element Index="[17]" Value="1.60714921e-041"/>
 <Element Index="[18]" Value="0.0"/>
-<Element Index="[19]" Value="2.734375"/>
+<Element Index="[19]" Value="2.6875"/>
 <Element Index="[20]" Value="0.0"/>
 <Element Index="[21]" Value="0.0"/>
 <Element Index="[22]" Value="0.0"/>
@@ -12706,7 +13306,7 @@ Int - 1 / Ext - 0]]>
 <![CDATA[[0,0,5.00000000e+000,0.00000000e+000,1,0.00000000e+000,3.00000000e+000,[1496523,288000000,7359
 		],[0,28800000,10001],[1496523,999999999,1720239],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],0,[1496523,5000,0],5,0,0.00000000e+000
-		]]]>
+		,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="Acrison_Feeder">
@@ -12787,6 +13387,9 @@ Int - 1 / Ext - 0]]>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="5"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RPM" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -12798,7 +13401,7 @@ Int - 1 / Ext - 0]]>
 <![CDATA[[0,0,5.00000000e+000,0.00000000e+000,1,0.00000000e+000,3.00000000e+000,[1577995,288000000,13534
 		],[0,28800000,10001],[1577995,999999999,1964985],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],0,[1577995,5000,0],5,0,0.00000000e+000
-		]]]>
+		,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="Acrison_Feeder">
@@ -12879,6 +13482,9 @@ Int - 1 / Ext - 0]]>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="5"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
 <DataValueMember Name="RPM" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="VFDCommsIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDNotReadyIntlk" DataType="BOOL" Value="0"/>
+<DataValueMember Name="VFDFaultIntlk" DataType="BOOL" Value="0"/>
 </Structure>
 </Data>
 </Tag>
@@ -12909,9 +13515,10 @@ Int - 1 / Ext - 0]]>
 <Tag Name="VFD_Panel_Safety_SC_1_GF301_STO_OK" TagType="Alias" Radix="Decimal" AliasFor="XS26_VFD_Cabinet_Safety_Controller:I1.Data[1].3" ExternalAccess="Read/Write"/>
 <Tag Name="VFD_Panel_Safety_System_LockOut" TagType="Alias" Radix="Decimal" AliasFor="XS26_VFD_Cabinet_Safety_Controller:I1.Data[0].0" ExternalAccess="Read/Write"/>
 <Tag Name="VFD_Panel_Safety_VF201_GF101_STO_OK" TagType="Alias" Radix="Decimal" AliasFor="XS26_VFD_Cabinet_Safety_Controller:I1.Data[1].0" ExternalAccess="Read/Write"/>
+<Tag Name="VFD_Panel_Safety_WaitingForReset" TagType="Alias" Radix="Decimal" AliasFor="XS26_VFD_Cabinet_Safety_Controller:I1.Data[1].5" ExternalAccess="Read/Write"/>
 <Tag Name="YellowFlashOff" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[3246493,500,0]]]>
+<![CDATA[[903319,500,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="TIMER">
@@ -12925,7 +13532,7 @@ Int - 1 / Ext - 0]]>
 </Tag>
 <Tag Name="YellowFlashOn" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[3246493,500,0]]]>
+<![CDATA[[903319,500,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="TIMER">
@@ -13325,28 +13932,76 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 </Rung>
 <Rung Number="2" Type="N">
 <Comment>
+<![CDATA[Auto mode selected for device]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[dNum].HMI_AutoSelect)[OTL(Device[dNum].AutoMan) ,OTU(Device[dNum].ManualRun) ,OTU(Device[dNum].AutoArmed) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Auto mode selected for device]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[dNum].HMI_ManualSelect)[OTU(Device[dNum].AutoMan) ,[OTU(Device[dNum].ManualRun) ,OTU(Device[dNum].AutoArmed) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[arms a device only when you issue a fresh global Auto Start:]]>
+</Comment>
+<Text>
+<![CDATA[XIC(HMI_AutoStart)XIC(Device[dNum].AutoMan)OTL(Device[dNum].AutoArmed);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[sets all interlocks when any estop active]]>
+</Comment>
+<Text>
+<![CDATA[XIC(EstopActive)[OTL(Device[dNum].Interlock) ,OTL(EStopResetRequired) ,MOV(10,Device[dNum].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[Reset all device interlocks from the reset button the on the VFD panel (EstopResetPulse) when no E-stop is active]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(HMI_InterlockResetAll) ,XIC(EStopResetPulse) ]XIO(EstopActive)[OTU(EStopResetRequired) ,MOV(0,Device[dNum].InterlockID) ,OTU(Device[dNum].Interlock) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ,OTE(MX201_LowerHowesVFD:O.ClearFaults) ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
 <![CDATA[Manual Start Logic]]>
 </Comment>
 <Text>
 <![CDATA[XIO(Device[dNum].AutoMan)XIC(Device[dNum].HMI_ManualStart)XIC(Device[dNum].PermissivesMan)XIO(Device[dNum].Interlock)XIC(AllDeviceEnable)OTL(Device[dNum].ManualRun);]]>
 </Text>
 </Rung>
-<Rung Number="3" Type="N">
+<Rung Number="8" Type="N">
 <Text>
 <![CDATA[[XIC(Device[dNum].HMI_ManualStop) ,[XIC(Device[dNum].AutoMan) ,[XIC(Device[dNum].Interlock) ,[XIO(Device[dNum].PermissivesMan) ,XIO(AllDeviceEnable) ] ] ] ]OTU(Device[dNum].ManualRun);]]>
 </Text>
 </Rung>
-<Rung Number="4" Type="N">
+<Rung Number="9" Type="N">
 <Text>
-<![CDATA[XIC(AutoActive)XIC(Device[dNum].AutoMan)OTE(Device[dNum].AutoRun);]]>
+<![CDATA[XIC(AutoActive)XIC(Device[dNum].AutoMan)XIC(Device[dNum].AutoArmed)XIO(Auto_Run_All_Interlock)OTE(Device[dNum].AutoRun);]]>
 </Text>
 </Rung>
-<Rung Number="5" Type="N">
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[clear AutoArmed whenever the automatic run is deliberately terminated or faulted.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(HMI_AutoStop) ,[XIC(HMI_AllReset) ,XIC(Auto_Run_All_Interlock) ] ]OTU(Device[dNum].AutoArmed);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
 <Text>
 <![CDATA[[XIC(Device[dNum].AutoMan) XIC(Device[dNum].AutoRun) ,XIO(Device[dNum].AutoMan) XIC(Device[dNum].ManualRun) ]OTE(Device[dNum].RunRequest);]]>
 </Text>
 </Rung>
-<Rung Number="6" Type="N">
+<Rung Number="12" Type="N">
 <Comment>
 <![CDATA[This logic controls the run / stop for FT103 when running in Auto and Manual]]>
 </Comment>
@@ -13354,17 +14009,17 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[[XIC(Device[dNum].AutoMan) XIC(Device[dNum].AutoRun) XIC(Device[dNum].PermissivesAuto) ,XIO(Device[dNum].AutoMan) XIC(Device[dNum].ManualRun) XIC(Device[dNum].PermissivesMan) ]XIC(StartBeepTimer.DN)TON(Device[dNum].StartDelay,?,?);]]>
 </Text>
 </Rung>
-<Rung Number="7" Type="N">
+<Rung Number="13" Type="N">
 <Text>
 <![CDATA[XIC(alwaysOFF)XIC(HMI_RecipeStart)ONS(Device[dNum].OneShots[3])OTL(Device[dNum].AutoRun);]]>
 </Text>
 </Rung>
-<Rung Number="8" Type="N">
+<Rung Number="14" Type="N">
 <Text>
 <![CDATA[XIC(alwaysOFF)XIO(HMI_RecipeStart)ONS(Device[dNum].OneShots[4])OTU(Device[dNum].AutoRun);]]>
 </Text>
 </Rung>
-<Rung Number="9" Type="N">
+<Rung Number="15" Type="N">
 <Comment>
 <![CDATA[Start device and reset and start the  device cycle timer, run campaign timer and total timer]]>
 </Comment>
@@ -13372,7 +14027,7 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[XIC(Device[dNum].StartDelay.DN)[XIC(AllDeviceEnable) XIO(Device[dNum].Interlock) OTE(Device[dNum].Output) ,[RTO(Device[dNum].CycleTime,?,?) RTO(Device[dNum].TotalTime,?,?) ,ONS(Device[dNum].OneShots[0]) RES(Device[dNum].CycleTime) ] ];]]>
 </Text>
 </Rung>
-<Rung Number="10" Type="N">
+<Rung Number="16" Type="N">
 <Comment>
 <![CDATA[If any device in placed into manaul run - set the AnyManualRun bit to trigger pre-start beep]]>
 </Comment>
@@ -13380,7 +14035,7 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[XIC(Device[dNum].ManualRun)[OTL(AnyManualRun) ,OTL(AnyManRunFlag) ];]]>
 </Text>
 </Rung>
-<Rung Number="11" Type="N">
+<Rung Number="17" Type="N">
 <Comment>
 <![CDATA[If any device in placed into Auto run - set the AnyManualRun bit to trigger pre-start beep]]>
 </Comment>
@@ -13388,7 +14043,7 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[XIC(Device[dNum].AutoRun)[OTL(AnyAutoRun) ,OTL(AnyAutoRunFlag) ];]]>
 </Text>
 </Rung>
-<Rung Number="12" Type="N">
+<Rung Number="18" Type="N">
 <Comment>
 <![CDATA[Timed Run or Campaing Time Run Logic - Logic to clear Campaign Timer on timed run enable and increment the campaign (Camp) timer when the device in running a timed run]]>
 </Comment>
@@ -13396,7 +14051,7 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[XIC(Device[dNum].TimeRunEnable)[ONS(Device[dNum].OneShots[1]) OTL(Device[dNum].AutoMan) RES(Device[dNum].CampTime) ,XIC(Device[dNum].Output) RTO(Device[dNum].CampTime,?,?) ];]]>
 </Text>
 </Rung>
-<Rung Number="13" Type="N">
+<Rung Number="19" Type="N">
 <Comment>
 <![CDATA[Timed Run or Campaing Time Run Logic - if campaign timer greater than target or timed run bit off - stop the timed run logic and reset all to manual and idle]]>
 </Comment>
@@ -13404,15 +14059,15 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[XIC(Device[dNum].TimeRunEnable)GRT(Device[dNum].CampTime.ACC,Device[dNum].TimedRunTargetms)ONS(RecipeStart)OTE(AllReset);]]>
 </Text>
 </Rung>
-<Rung Number="14" Type="N">
+<Rung Number="20" Type="N">
 <Comment>
 <![CDATA[Interlock all devices running in  Auto Run and Turn then off when an interlcok from any other device running in Auto Run is triggered]]>
 </Comment>
 <Text>
-<![CDATA[XIC(Device[dNum].AutoRun)XIC(Device[dNum].AutoMan)XIC(Auto_Run_All_Interlock)[OTL(Device[dNum].Interlock) ,OTU(Device[dNum].AutoRun) ];]]>
+<![CDATA[XIC(Device[dNum].AutoRun)XIC(Device[dNum].AutoMan)XIC(Auto_Run_All_Interlock)OTU(Device[dNum].AutoRun);]]>
 </Text>
 </Rung>
-<Rung Number="15" Type="N">
+<Rung Number="21" Type="N">
 <Comment>
 <![CDATA[Reset AutoMan, AutoRun, TimeRunEnable, and HIMI_ReceipStart on PLC or HMI All_Rest]]>
 </Comment>
@@ -13420,7 +14075,7 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[[XIC(AllReset) ,XIC(HMI_AllReset) ][OTU(Device[dNum].AutoMan) OTU(Device[dNum].AutoRun) OTU(Device[dNum].ManualRun) ,OTU(Device[dNum].TimeRunEnable) OTU(HMI_RecipeStart) ];]]>
 </Text>
 </Rung>
-<Rung Number="16" Type="N">
+<Rung Number="22" Type="N">
 <Comment>
 <![CDATA[Reset All Reset and HMI All Rest after scanning all devices]]>
 </Comment>
@@ -13428,12 +14083,12 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[XIC(alwaysOFF)OTU(AllReset);]]>
 </Text>
 </Rung>
-<Rung Number="17" Type="N">
+<Rung Number="23" Type="N">
 <Text>
 <![CDATA[XIC(alwaysOFF)OTE(TestBit1);]]>
 </Text>
 </Rung>
-<Rung Number="18" Type="N">
+<Rung Number="24" Type="N">
 <Text>
 <![CDATA[XIC(MX101_Clr_VFd_Faults)OTE(MX101_UpperHowesVFD:O.ClearFaults);]]>
 </Text>
@@ -13565,35 +14220,182 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Description>
 <RLLContent>
 <Rung Number="0" Type="N">
-<Comment>
-<![CDATA[FT103 High Pressure Interlock — Always interlocks FT103. If FT103 is actively running in Auto, also interlocks the Auto process.]]>
-</Comment>
 <Text>
-<![CDATA[XIC(FT103B.HighPressureInterlock)[OTL(Device[7].Interlock) ,XIC(Device[7].AutoMan) XIC(Device[7].AutoRun) OTL(Auto_Run_All_Interlock) ];]]>
+<![CDATA[[XIO(VFD_Panel_Safety_Panel_Etop_OK) ,XIO(VFD_Panel_Safety_Remote_Estops_OK) ]OTE(EstopActive);]]>
 </Text>
 </Rung>
 <Rung Number="1" Type="N">
-<Comment>
-<![CDATA[FT104 High Pressure Interlock — Always interlocks FT104. If FT104 is actively running in Auto, also interlocks the Auto process.]]>
-</Comment>
 <Text>
-<![CDATA[XIC(FT104B.HighPressureInterlock)[OTL(Device[8].Interlock) ,XIC(Device[8].AutoMan) XIC(Device[8].AutoRun) OTL(Auto_Run_All_Interlock) ];]]>
+<![CDATA[[XIC(MX101.LidInterlock) ,XIC(MX101.DevErrorInterlock) ,XIC(MX101.VFDCommsIntlk) ,XIC(MX101.VFDFaultIntlk) ,XIC(MX101.VFDNotReadyIntlk) ]OTL(Device[0].Interlock);]]>
 </Text>
 </Rung>
 <Rung Number="2" Type="N">
-<Comment>
-<![CDATA[FT105 High Pressure Interlock — Always interlocks FT105. If FT105 is actively running in Auto, also interlocks the Auto process.]]>
-</Comment>
 <Text>
-<![CDATA[XIC(FT105B.HighPressureInterlock)[OTL(Device[9].Interlock) ,XIC(Device[9].AutoMan) XIC(Device[9].AutoRun) OTL(Auto_Run_All_Interlock) ];]]>
+<![CDATA[XIC(Device[0].HMI_DeviceReset)[OTU(MX101.LidInterlock) ,OTU(MX101.DevErrorInterlock) ,OTU(MX101.VFDCommsIntlk) ,OTU(MX101.VFDFaultIntlk) ,OTU(MX101.VFDNotReadyIntlk) ,OTU(Device[0].Interlock) ,MOV(0,Device[0].InterlockID) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ];]]>
 </Text>
 </Rung>
 <Rung Number="3" Type="N">
+<Text>
+<![CDATA[[XIC(MX201.LidInterlock) ,XIC(MX201.DevErrorInterlock) ,XIC(MX201.VFDCommsIntlk) ,XIC(MX201.VFDFaultIntlk) ,XIC(MX201.VFDNotReadyIntlk) ]OTL(Device[1].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(Device[1].HMI_DeviceReset)[OTU(MX201.LidInterlock) ,OTU(MX201.DevErrorInterlock) ,OTU(MX201.VFDCommsIntlk) ,OTU(MX201.VFDFaultIntlk) ,OTU(MX201.VFDNotReadyIntlk) ,OTU(Device[1].Interlock) ,MOV(0,Device[1].InterlockID) ,OTE(MX201_LowerHowesVFD:O.ClearFaults) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[[XIC(GF101.ExcessDevInterlock) ,XIC(GF101.VFDCommsIntlk) ,XIC(GF101.VFDFaultIntlk) ,XIC(GF101.VFDNotReadyIntlk) ]OTL(Device[2].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[Clear the Excess Dev Interlock and Write Ack to GF101 Feeder Controller to reset it (clear the local alarm bit)]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[2].HMI_DeviceReset)[OTU(GF101.ExcessDevInterlock) ,OTE(GF101_Write_Acknowledge) ,OTU(GF101.VFDCommsIntlk) ,OTU(GF101.VFDFaultIntlk) ,OTU(GF101.VFDNotReadyIntlk) ,OTU(Device[2].Interlock) ,MOV(0,Device[2].InterlockID) ,OTE(GF101_Limestone_Feeder:O.ClearFaults) ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[[XIC(GF201.ExcessDevInterlock) ,XIC(GF201.VFDCommsIntlk) ,XIC(GF201.VFDFaultIntlk) ,XIC(GF201.VFDNotReadyIntlk) ]OTL(Device[3].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[Clear the Excess Dev Interlock and Write Ack to GF101 Feeder Controller to reset it (clear the local alarm bit)]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[3].HMI_DeviceReset)[OTU(GF201.ExcessDevInterlock) ,OTE(GF201_Write_Acknowledge) ,OTU(GF201.VFDCommsIntlk) ,OTU(GF201.VFDFaultIntlk) ,OTU(GF201.VFDNotReadyIntlk) ,OTU(Device[3].Interlock) ,MOV(0,Device[3].InterlockID) ,OTE(GF201_Bentonite_Feeder:O.ClearFaults) ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[[XIC(VF101.VFDCommsIntlk) ,XIC(VF101.VFDCommsIntlk) ,XIC(VF101.VFDNotReadyIntlk) ]OTL(Device[5].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[Clear the Excess Dev Interlock and Write Ack to GF101 Feeder Controller to reset it (clear the local alarm bit)]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[5].HMI_DeviceReset)[MOV(0,Device[5].InterlockID) ,OTU(VF101.VFDCommsIntlk) ,OTU(VF101.VFDFaultIntlk) ,OTU(VF101.VFDNotReadyIntlk) ,OTU(Device[5].Interlock) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[[XIC(VF201.VFDCommsIntlk) ,XIC(VF201.VFDFaultIntlk) ,XIC(VF201.VFDNotReadyIntlk) ]OTL(Device[6].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[Clear the Excess Dev Interlock and Write Ack to GF101 Feeder Controller to reset it (clear the local alarm bit)]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[6].HMI_DeviceReset)[MOV(0,Device[6].InterlockID) ,OTU(VF201.VFDCommsIntlk) ,OTU(VF201.VFDFaultIntlk) ,OTU(VF201.VFDNotReadyIntlk) ,OTU(Device[6].Interlock) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[FT103 High Pressure or Alarm Interlock — Always interlocks FT103. If FT103 is actively running in Auto, also interlocks the Auto process.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(FT103B.HighPressureInterlock) ,XIC(FT103B.Alarm) ]OTL(Device[7].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[FT104 High Pressure or Alarm Interlock — Always interlocks FT104. If FT104 is actively running in Auto, also interlocks the Auto process.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(FT104B.HighPressureInterlock) ,XIC(FT104B.Alarm) ]OTL(Device[8].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[FT105 High Pressure or Alarm Interlock — Always interlocks FT105. If FT105 is actively running in Auto, also interlocks the Auto process.]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(FT105B.HighPressureInterlock) ,XIC(FT105B.Alarm) ]OTL(Device[9].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
 <Comment>
 <![CDATA[Unlatch  Auto_Run_All_Interlock on HMI reset]]>
 </Comment>
 <Text>
 <![CDATA[XIC(HMI_AllReset)[OTU(Auto_Run_All_Interlock) ,[OTU(Device[7].Interlock) ,[OTU(Device[8].Interlock) ,OTU(Device[9].Interlock) ] ] ];]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[Reset FT103 Pressure Interlock and Device Interlock if  and if Pressure and alarm at ok
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[7].HMI_DeviceReset)LEQ(PT103_PV_RAW,FT103B.HighPressureLimit_Int)OTU(FT103B.HighPressureInterlock)XIO(FT103B.Alarm)[OTU(Device[7].Interlock) ,MOV(0,Device[7].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Comment>
+<![CDATA[Reset FT104 Pressure Interlock and Device Interlock if  and if Pressure and alarm at ok]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[8].HMI_DeviceReset)LEQ(PT104_PV_RAW,FT104B.HighPressureLimit_Int)OTU(FT104B.HighPressureInterlock)XIO(FT104B.Alarm)[OTU(Device[8].Interlock) ,MOV(0,Device[8].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Comment>
+<![CDATA[Reset FT104 Pressure Interlock and Device Interlock if  and if Pressure and alarm at ok
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Device[9].HMI_DeviceReset)LEQ(PT105_PV_RAW,FT105B.HighPressureLimit_Int)OTU(FT105B.HighPressureInterlock)XIO(FT105B.Alarm)[OTU(Device[9].Interlock) ,MOV(0,Device[9].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[XIC(HMI_ProcessReset)XIO(AnyDeviceInterlock)OTU(Auto_Run_All_Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="21" Type="N">
+<Text>
+<![CDATA[[XIC(Device[0].Interlock) ,XIC(Device[1].Interlock) ,XIC(Device[2].Interlock) ,XIC(Device[3].Interlock) ,XIC(Device[4].Interlock) ,XIC(Device[5].Interlock) ,XIC(Device[6].Interlock) ,XIC(Device[7].Interlock) ,XIC(Device[8].Interlock) ,XIC(Device[9].Interlock) ,XIC(Device[10].Interlock) ,XIC(Device[11].Interlock) ,XIC(Device[12].Interlock) ,XIC(Device[13].Interlock) ]OTE(AnyDeviceInterlock);]]>
+</Text>
+</Rung>
+<Rung Number="22" Type="N">
+<Text>
+<![CDATA[[XIC(Device[0].AutoMan) XIC(Device[0].Interlock) ,XIC(Device[1].AutoMan) XIC(Device[1].Interlock) ,XIC(Device[2].AutoMan) XIC(Device[2].Interlock) ,XIC(Device[3].AutoMan) XIC(Device[3].Interlock) ,XIC(Device[4].AutoMan) XIC(Device[4].Interlock) ,XIC(Device[5].AutoMan) XIC(Device[5].Interlock) ,XIC(Device[6].AutoMan) XIC(Device[6].Interlock) ,XIC(Device[7].AutoMan) XIC(Device[7].Interlock) ,XIC(Device[8].AutoMan) XIC(Device[8].Interlock) ,XIC(Device[9].AutoMan) XIC(Device[9].Interlock) ,XIC(Device[10].AutoMan) XIC(Device[10].Interlock) ,XIC(Device[11].AutoMan) XIC(Device[11].Interlock) ,XIC(Device[12].AutoMan) XIC(Device[12].Interlock) ,XIC(Device[13].AutoMan) XIC(Device[13].Interlock) ]OTE(AnyAutoDeviceInterlock);]]>
+</Text>
+</Rung>
+<Rung Number="23" Type="N">
+<Text>
+<![CDATA[XIC(AnyAutoDeviceInterlock)OTL(Auto_Run_All_Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="24" Type="N">
+<Comment>
+<![CDATA[Arm reset]]>
+</Comment>
+<Text>
+<![CDATA[XIC(VFD_Panel_Safety_WaitingForReset)OTL(EStopResetArmed);]]>
+</Text>
+</Rung>
+<Rung Number="25" Type="N">
+<Comment>
+<![CDATA[Generate pulse when Banner accepts reset]]>
+</Comment>
+<Text>
+<![CDATA[XIC(EStopResetArmed)XIO(VFD_Panel_Safety_WaitingForReset)ONS(EStopReset_OS)OTE(EStopResetPulse);]]>
+</Text>
+</Rung>
+<Rung Number="26" Type="N">
+<Comment>
+<![CDATA[Disarm]]>
+</Comment>
+<Text>
+<![CDATA[XIC(EStopResetPulse)[OTU(EStopResetArmed) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ];]]>
 </Text>
 </Rung>
 </RLLContent>
@@ -13898,10 +14700,61 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[If error persistance timer done - interlock device]]>
 </Comment>
 <Text>
-<![CDATA[XIC(Device[0].ErrorTimer.DN)XIC(alwaysOFF)OTL(Device[0].Interlock);]]>
+<![CDATA[XIC(Device[0].ErrorTimer.DN)XIC(alwaysOFF)OTL(MX101.DevErrorInterlock);]]>
 </Text>
 </Rung>
 <Rung Number="12" Type="N">
+<Comment>
+<![CDATA[If Mixer 101 Lid open - Interlock the mixer]]>
+</Comment>
+<Text>
+<![CDATA[XIO(VFD_Panel_Safety_MX101_Lid_Ok)OTL(MX101.LidInterlock);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[Get the VFD status word to set no comms bit if comms gone]]>
+</Comment>
+<Text>
+<![CDATA[GSV(Module,MX101_UpperHowesVFD,EntryStatus,Device[0].VFDEntryStatus);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[Think of the MEQ as saying:
+
+"Ignore everything in VFDEntryStatus except these particular bits, and tell me whether those bits equal 4."]]>
+</Comment>
+<Text>
+<![CDATA[MEQ(Device[0].VFDEntryStatus,16#0000F000,16#00004000)OTE(Device[0].VFDCommsOK);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[If VFD comms NOT ok - set the VFD comms interlock bit for Device[0] - MX101
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Device[0].VFDCommsOK)[OTE(MX101.VFDCommsIntlk) ,MOV(20,Device[0].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIC(MX101_UpperHowesVFD:I.Faulted)[OTE(MX101.VFDFaultIntlk) ,MOV(21,Device[0].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIO(MX101_UpperHowesVFD:I.Ready)[OTE(MX101.VFDNotReadyIntlk) ,MOV(22,Device[0].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
 <Comment>
 <![CDATA[Reset interlock on all system reset]]>
 </Comment>
@@ -14003,10 +14856,61 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[If error persistance timer done - interlock device]]>
 </Comment>
 <Text>
-<![CDATA[XIC(Device[1].ErrorTimer.DN)OTL(Device[1].Interlock);]]>
+<![CDATA[XIC(Device[1].ErrorTimer.DN)OTL(MX201.DevErrorInterlock);]]>
 </Text>
 </Rung>
 <Rung Number="12" Type="N">
+<Comment>
+<![CDATA[If Mixer 101 Lid open - Interlock the mixer]]>
+</Comment>
+<Text>
+<![CDATA[XIO(VFD_Panel_Safety_MX1012_Lid_Ok)OTL(MX201.LidInterlock);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[Get the VFD status word to set no comms bit if comms gone]]>
+</Comment>
+<Text>
+<![CDATA[GSV(Module,MX201_LowerHowesVFD,EntryStatus,Device[1].VFDEntryStatus);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[Think of the MEQ as saying:
+
+"Ignore everything in VFDEntryStatus except these particular bits, and tell me whether those bits equal 4."]]>
+</Comment>
+<Text>
+<![CDATA[MEQ(Device[1].VFDEntryStatus,16#0000F000,16#00004000)OTE(Device[1].VFDCommsOK);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Comment>
+<![CDATA[If VFD comms NOT ok - set the VFD comms interlock bit for Device[0] - MX101
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Device[1].VFDCommsOK)[OTE(MX201.VFDCommsIntlk) ,MOV(10,Device[1].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIC(MX201_LowerHowesVFD:I.Faulted)[OTE(MX201.VFDFaultIntlk) ,MOV(21,Device[1].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIO(MX201_LowerHowesVFD:I.Ready)[OTE(MX201.VFDNotReadyIntlk) ,MOV(22,Device[1].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
 <Comment>
 <![CDATA[Reset interlock on all system reset]]>
 </Comment>
@@ -14085,6 +14989,54 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[XIC(HMI_AllReset)OTU(Device[2].Interlock);]]>
 </Text>
 </Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[XIC(GF101_Shutdown_ExcessDevSp)[OTL(GF101.ExcessDevInterlock) ,MOV(60,Device[2].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[Get the VFD status word to set no comms bit if comms gone]]>
+</Comment>
+<Text>
+<![CDATA[GSV(Module,GF101_Limestone_Feeder,EntryStatus,Device[2].VFDEntryStatus);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[Think of the MEQ as saying:
+
+"Ignore everything in VFDEntryStatus except these particular bits, and tell me whether those bits equal 4."]]>
+</Comment>
+<Text>
+<![CDATA[MEQ(Device[2].VFDEntryStatus,16#0000F000,16#00004000)OTE(Device[2].VFDCommsOK);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[If VFD comms NOT ok - set the VFD comms interlock bit for Device[0] - MX101
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Device[2].VFDCommsOK)[OTE(GF101.VFDCommsIntlk) ,MOV(10,Device[2].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIC(GF101_Limestone_Feeder:I.Faulted)[OTE(GF101.VFDFaultIntlk) ,MOV(21,Device[2].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIO(GF101_Limestone_Feeder:I.Ready)[OTE(GF101.VFDNotReadyIntlk) ,MOV(22,Device[2].InterlockID) ];]]>
+</Text>
+</Rung>
 </RLLContent>
 </Routine>
 <Routine Name="_03_GF201_Thayer2_WB_Feeder" Type="RLL">
@@ -14143,6 +15095,54 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Comment>
 <Text>
 <![CDATA[XIC(HMI_AllReset)OTU(Device[3].Interlock);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[XIC(GF201_Shutdown_ExcessDevSP)[OTL(GF201.ExcessDevInterlock) ,MOV(60,Device[3].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[Get the VFD status word to set no comms bit if comms gone]]>
+</Comment>
+<Text>
+<![CDATA[GSV(Module,GF201_Bentonite_Feeder,EntryStatus,Device[3].VFDEntryStatus);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[Think of the MEQ as saying:
+
+"Ignore everything in VFDEntryStatus except these particular bits, and tell me whether those bits equal 4."]]>
+</Comment>
+<Text>
+<![CDATA[MEQ(Device[3].VFDEntryStatus,16#0000F000,16#00004000)OTE(Device[3].VFDCommsOK);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[If VFD comms NOT ok - set the VFD comms interlock bit for Device[0] - MX101
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Device[3].VFDCommsOK)[OTE(GF201.VFDCommsIntlk) ,MOV(10,Device[3].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIC(GF201_Bentonite_Feeder:I.Faulted)[OTE(GF201.VFDFaultIntlk) ,MOV(21,Device[3].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIO(GF201_Bentonite_Feeder:I.Ready)[OTE(GF201.VFDNotReadyIntlk) ,MOV(22,Device[3].InterlockID) ];]]>
 </Text>
 </Rung>
 </RLLContent>
@@ -14290,6 +15290,49 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Rung>
 <Rung Number="8" Type="N">
 <Comment>
+<![CDATA[Get the VFD status word to set no comms bit if comms gone]]>
+</Comment>
+<Text>
+<![CDATA[GSV(Module,VF101_Medium_Feeder,EntryStatus,Device[5].VFDEntryStatus);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[Think of the MEQ as saying:
+
+"Ignore everything in VFDEntryStatus except these particular bits, and tell me whether those bits equal 4."]]>
+</Comment>
+<Text>
+<![CDATA[MEQ(Device[5].VFDEntryStatus,16#0000F000,16#00004000)OTE(Device[5].VFDCommsOK);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[If VFD comms NOT ok - set the VFD comms interlock bit for Device[0] - MX101
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Device[5].VFDCommsOK)[OTE(VF101.VFDCommsIntlk) ,MOV(10,Device[5].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIC(VF101_Medium_Feeder:I.Faulted)[OTE(VF101.VFDFaultIntlk) ,MOV(21,Device[5].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIO(VF101_Medium_Feeder:I.Ready)[OTE(VF101.VFDNotReadyIntlk) ,MOV(22,Device[5].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
 <![CDATA[Reset interlock on all system reset]]>
 </Comment>
 <Text>
@@ -14363,6 +15406,49 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Rung>
 <Rung Number="8" Type="N">
 <Comment>
+<![CDATA[Get the VFD status word to set no comms bit if comms gone]]>
+</Comment>
+<Text>
+<![CDATA[GSV(Module,VF201_Small_Feeder_2,EntryStatus,Device[6].VFDEntryStatus);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[Think of the MEQ as saying:
+
+"Ignore everything in VFDEntryStatus except these particular bits, and tell me whether those bits equal 4."]]>
+</Comment>
+<Text>
+<![CDATA[MEQ(Device[6].VFDEntryStatus,16#0000F000,16#00004000)OTE(Device[6].VFDCommsOK);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[If VFD comms NOT ok - set the VFD comms interlock bit for Device[0] - MX101
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(Device[6].VFDCommsOK)[OTE(VF201.VFDCommsIntlk) ,MOV(20,Device[6].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIC(VF201_Small_Feeder_2:I.Faulted)[OTE(VF201.VFDFaultIntlk) ,MOV(21,Device[6].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[If VFD Faulted - set the VFD faulted interlock bit]]>
+</Comment>
+<Text>
+<![CDATA[XIO(VF201_Small_Feeder_2:I.Ready)[OTE(VF201.VFDNotReadyIntlk) ,MOV(22,Device[6].InterlockID) ];]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Comment>
 <![CDATA[Reset interlock on all system reset]]>
 </Comment>
 <Text>
@@ -14413,7 +15499,7 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[If error persistance timer done - interlock device]]>
 </Comment>
 <Text>
-<![CDATA[XIC(FT103B.HighPressureTimer.DN)OTL(FT103B.HighPressureInterlock);]]>
+<![CDATA[XIC(FT103B.HighPressureTimer.DN)[OTL(FT103B.HighPressureInterlock) ,MOV(50,Device[7].InterlockID) ];]]>
 </Text>
 </Rung>
 <Rung Number="5" Type="N">
@@ -14422,19 +15508,11 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Text>
 </Rung>
 <Rung Number="6" Type="N">
-<Comment>
-<![CDATA[Reset interlock on all system reset]]>
-</Comment>
-<Text>
-<![CDATA[XIC(HMI_AllReset)OTU(FT103B.HighPressureInterlock);]]>
-</Text>
-</Rung>
-<Rung Number="7" Type="N">
 <Text>
 <![CDATA[[OTE(Device[7].PermissivesAuto) ,OTE(Device[7].PermissivesMan) ];]]>
 </Text>
 </Rung>
-<Rung Number="8" Type="N">
+<Rung Number="7" Type="N">
 <Comment>
 <![CDATA[Toggle the 8 bit of the SINT Anybus_ETH_SER:O.Data[1].7 to trigger reset command  for FT104 in Anybus gateway]]>
 </Comment>
@@ -14442,7 +15520,7 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[XIC(FT103.TotalizerReset)OTE(Anybus_ETH_SER:O.Data[0].0);]]>
 </Text>
 </Rung>
-<Rung Number="9" Type="N">
+<Rung Number="8" Type="N">
 <Comment>
 <![CDATA[Write to bit 0 of the SINT Anybus_ETH_SER:O.Data[3].0 to enable/diable the totalizer for FT103 in Anybus gateway]]>
 </Comment>
@@ -14450,7 +15528,7 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[XIC(FT103.TotalizerEnable)XIC(Device[7].Output)OTE(Anybus_ETH_SER:O.Data[3].0);]]>
 </Text>
 </Rung>
-<Rung Number="10" Type="N">
+<Rung Number="9" Type="N">
 <Comment>
 <![CDATA[Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[6].0 to trigger the clear reset (needed before Alarm reset)
 Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[7].0 to trigger the Alarrm Reset]]>
@@ -14459,20 +15537,20 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[7].0 to trigger the Alarrm Rese
 <![CDATA[XIC(FT103.AlarmReset)[OTE(Anybus_ETH_SER:O.Data[6].0) ,OTE(Anybus_ETH_SER:O.Data[7].0) ];]]>
 </Text>
 </Rung>
-<Rung Number="11" Type="N">
+<Rung Number="10" Type="N">
 <Text>
 <![CDATA[XIC(FT103B.AlarmReset)OTE(FT103B.AlarmResetCmd);]]>
 </Text>
 </Rung>
-<Rung Number="12" Type="N">
+<Rung Number="11" Type="N">
 <Comment>
 <![CDATA[If there is any alarm condition from the flow meter - set alarm bit.]]>
 </Comment>
 <Text>
-<![CDATA[NEQ(FT103B.AlarmID,0)OTE(FT103B.Alarm);]]>
+<![CDATA[NEQ(FT103B.AlarmID,0)[OTE(FT103B.Alarm) ,MOV(40,Device[7].InterlockID) ];]]>
 </Text>
 </Rung>
-<Rung Number="13" Type="N">
+<Rung Number="12" Type="N">
 <Comment>
 <![CDATA[Compute the % error from SP when device is running]]>
 </Comment>
@@ -14524,23 +15602,15 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[7].0 to trigger the Alarrm Rese
 <![CDATA[If error persistance timer done - interlock device]]>
 </Comment>
 <Text>
-<![CDATA[XIC(FT104B.HighPressureTimer.DN)OTL(FT104B.HighPressureInterlock);]]>
+<![CDATA[XIC(FT104B.HighPressureTimer.DN)[OTL(FT104B.HighPressureInterlock) ,MOV(50,Device[8].InterlockID) ];]]>
 </Text>
 </Rung>
 <Rung Number="5" Type="N">
-<Comment>
-<![CDATA[Reset interlock on all system reset]]>
-</Comment>
-<Text>
-<![CDATA[XIC(HMI_AllReset)OTU(FT104B.HighPressureInterlock);]]>
-</Text>
-</Rung>
-<Rung Number="6" Type="N">
 <Text>
 <![CDATA[[OTE(Device[8].PermissivesAuto) ,OTE(Device[8].PermissivesMan) ];]]>
 </Text>
 </Rung>
-<Rung Number="7" Type="N">
+<Rung Number="6" Type="N">
 <Comment>
 <![CDATA[Toggle the 8 bit of the SINT Anybus_ETH_SER:O.Data[1].7 to trigger reset command  for FT104 in Anybus gateway]]>
 </Comment>
@@ -14548,7 +15618,7 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[7].0 to trigger the Alarrm Rese
 <![CDATA[XIC(FT104.TotalizerReset)OTE(Anybus_ETH_SER:O.Data[1].0);]]>
 </Text>
 </Rung>
-<Rung Number="8" Type="N">
+<Rung Number="7" Type="N">
 <Comment>
 <![CDATA[Write to bit 0 of the SINT Anybus_ETH_SER:O.Data[4].0 to enable/diable the totalizer for FT104 in Anybus gateway]]>
 </Comment>
@@ -14556,7 +15626,7 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[7].0 to trigger the Alarrm Rese
 <![CDATA[XIC(FT104.TotalizerEnable)XIC(Device[8].Output)OTE(Anybus_ETH_SER:O.Data[4].0);]]>
 </Text>
 </Rung>
-<Rung Number="9" Type="N">
+<Rung Number="8" Type="N">
 <Comment>
 <![CDATA[Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[8].0 to trigger the clear reset (needed before Alarm reset)
 Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[9].0 to trigger the Alarrm Reset]]>
@@ -14565,20 +15635,20 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[9].0 to trigger the Alarrm Rese
 <![CDATA[XIC(FT104.AlarmReset)[OTE(Anybus_ETH_SER:O.Data[8].0) ,OTE(Anybus_ETH_SER:O.Data[9].0) ];]]>
 </Text>
 </Rung>
-<Rung Number="10" Type="N">
+<Rung Number="9" Type="N">
 <Text>
 <![CDATA[XIC(FT104B.AlarmReset)OTE(FT104B.AlarmResetCmd);]]>
 </Text>
 </Rung>
-<Rung Number="11" Type="N">
+<Rung Number="10" Type="N">
 <Comment>
 <![CDATA[If there is any alarm condition from the flow meter - set alarm bit.]]>
 </Comment>
 <Text>
-<![CDATA[NEQ(FT104B.AlarmID,0)OTE(FT104B.Alarm);]]>
+<![CDATA[NEQ(FT104B.AlarmID,0)[OTE(FT104B.Alarm) ,MOV(40,Device[8].InterlockID) ];]]>
 </Text>
 </Rung>
-<Rung Number="12" Type="N">
+<Rung Number="11" Type="N">
 <Comment>
 <![CDATA[Compute the % error from SP when device is running]]>
 </Comment>
@@ -14630,7 +15700,7 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[9].0 to trigger the Alarrm Rese
 <![CDATA[If error persistance timer done - interlock device]]>
 </Comment>
 <Text>
-<![CDATA[XIC(FT105B.HighPressureTimer.DN)OTL(FT105B.HighPressureInterlock);]]>
+<![CDATA[XIC(FT105B.HighPressureTimer.DN)[OTL(FT105B.HighPressureInterlock) ,MOV(50,Device[9].InterlockID) ];]]>
 </Text>
 </Rung>
 <Rung Number="5" Type="N">
@@ -14639,19 +15709,11 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[9].0 to trigger the Alarrm Rese
 </Text>
 </Rung>
 <Rung Number="6" Type="N">
-<Comment>
-<![CDATA[Reset interlock on all system reset]]>
-</Comment>
-<Text>
-<![CDATA[XIC(HMI_AllReset)OTU(FT105B.HighPressureInterlock);]]>
-</Text>
-</Rung>
-<Rung Number="7" Type="N">
 <Text>
 <![CDATA[[OTE(Device[9].PermissivesAuto) ,OTE(Device[9].PermissivesMan) ];]]>
 </Text>
 </Rung>
-<Rung Number="8" Type="N">
+<Rung Number="7" Type="N">
 <Comment>
 <![CDATA[Toggle the 8 bit of the SINT Anybus_ETH_SER:O.Data[2].7 to trigger reset command  for FT104 in Anybus gateway]]>
 </Comment>
@@ -14659,7 +15721,7 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[9].0 to trigger the Alarrm Rese
 <![CDATA[XIC(FT105.TotalizerReset)OTE(Anybus_ETH_SER:O.Data[2].0);]]>
 </Text>
 </Rung>
-<Rung Number="9" Type="N">
+<Rung Number="8" Type="N">
 <Comment>
 <![CDATA[Write to bit 0 of the SINT Anybus_ETH_SER:O.Data[5].0 to enable/diable the totalizer for FT105 in Anybus gateway]]>
 </Comment>
@@ -14667,7 +15729,7 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[9].0 to trigger the Alarrm Rese
 <![CDATA[XIC(FT105.TotalizerEnable)XIC(Device[9].Output)OTE(Anybus_ETH_SER:O.Data[5].0);]]>
 </Text>
 </Rung>
-<Rung Number="10" Type="N">
+<Rung Number="9" Type="N">
 <Comment>
 <![CDATA[Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[10].0 to trigger the clear reset (needed before Alarm reset)
 Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[11].0 to trigger the Alarrm Reset]]>
@@ -14676,20 +15738,20 @@ Write to bit 1 of the SINT Anybus_ETH_SER:O.Data[11].0 to trigger the Alarrm Res
 <![CDATA[XIC(FT105.AlarmReset)[OTE(Anybus_ETH_SER:O.Data[10].0) ,OTE(Anybus_ETH_SER:O.Data[11].0) ];]]>
 </Text>
 </Rung>
-<Rung Number="11" Type="N">
+<Rung Number="10" Type="N">
 <Text>
 <![CDATA[XIC(FT105B.AlarmReset)OTE(FT105B.AlarmResetCmd);]]>
 </Text>
 </Rung>
-<Rung Number="12" Type="N">
+<Rung Number="11" Type="N">
 <Comment>
 <![CDATA[If there is any alarm condition from the flow meter - set alarm bit.]]>
 </Comment>
 <Text>
-<![CDATA[NEQ(FT105B.AlarmID,0)OTE(FT105B.Alarm);]]>
+<![CDATA[NEQ(FT105B.AlarmID,0)[OTE(FT105B.Alarm) ,MOV(40,Device[9].InterlockID) ];]]>
 </Text>
 </Rung>
-<Rung Number="13" Type="N">
+<Rung Number="12" Type="N">
 <Comment>
 <![CDATA[Compute the % error from SP when device is running]]>
 </Comment>
