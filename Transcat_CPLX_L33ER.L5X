@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="Transcat_L33ER" TargetType="Controller" ContainsContext="false" ExportDate="Fri Sep 18 11:28:55 2026" ExportOptions="NoRawData L5KData DecoratedData ForceProtectedEncoding AllProjDocTrans">
-<Controller Use="Target" Name="Transcat_L33ER" ProcessorType="1769-L33ER" MajorRev="32" MinorRev="11" TimeSlice="20" ShareUnusedTimeSlice="1" ProjectCreationDate="Mon Jun 24 14:28:57 2024" LastModifiedDate="Fri Sep 18 11:28:29 2026" SFCExecutionControl="CurrentActive" SFCRestartPosition="MostRecent"
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="Transcat_L33ER" TargetType="Controller" ContainsContext="false" ExportDate="Mon Sep 21 10:39:10 2026" ExportOptions="NoRawData L5KData DecoratedData ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Target" Name="Transcat_L33ER" ProcessorType="1769-L33ER" MajorRev="32" MinorRev="11" TimeSlice="20" ShareUnusedTimeSlice="1" ProjectCreationDate="Mon Jun 24 14:28:57 2024" LastModifiedDate="Fri Sep 18 12:07:07 2026" SFCExecutionControl="CurrentActive" SFCRestartPosition="MostRecent"
  SFCLastScan="DontScan" ProjectSN="16#60ea_b613" MatchProjectToController="false" CanUseRPIFromProducer="false" InhibitAutomaticFirmwareUpdate="0" PassThroughConfiguration="EnabledWithAppend" DownloadProjectDocumentationAndExtendedProperties="true" DownloadProjectCustomProperties="true" ReportMinorOverflow="false">
 <Description>
 <![CDATA[Upgraded CPLX to handle up to 32 EIP Nodes]]>
@@ -2701,11 +2701,11 @@
 <Element Index="[30]" Value="-3"/>
 <Element Index="[31]" Value="0"/>
 <Element Index="[32]" Value="0"/>
-<Element Index="[33]" Value="-126"/>
+<Element Index="[33]" Value="-125"/>
 <Element Index="[34]" Value="0"/>
 <Element Index="[35]" Value="0"/>
 <Element Index="[36]" Value="0"/>
-<Element Index="[37]" Value="-126"/>
+<Element Index="[37]" Value="-125"/>
 <Element Index="[38]" Value="0"/>
 <Element Index="[39]" Value="0"/>
 <Element Index="[40]" Value="0"/>
@@ -2725,7 +2725,7 @@
 <Element Index="[54]" Value="0"/>
 <Element Index="[55]" Value="0"/>
 <Element Index="[56]" Value="0"/>
-<Element Index="[57]" Value="4856"/>
+<Element Index="[57]" Value="4868"/>
 <Element Index="[58]" Value="1"/>
 <Element Index="[59]" Value="-5"/>
 <Element Index="[60]" Value="-1"/>
@@ -2741,7 +2741,7 @@
 <Element Index="[70]" Value="0"/>
 <Element Index="[71]" Value="2002"/>
 <Element Index="[72]" Value="273"/>
-<Element Index="[73]" Value="5689"/>
+<Element Index="[73]" Value="5923"/>
 <Element Index="[74]" Value="0"/>
 <Element Index="[75]" Value="0"/>
 <Element Index="[76]" Value="0"/>
@@ -2750,8 +2750,8 @@
 <Element Index="[79]" Value="0"/>
 <Element Index="[80]" Value="0"/>
 <Element Index="[81]" Value="0"/>
-<Element Index="[82]" Value="-17025"/>
-<Element Index="[83]" Value="26692"/>
+<Element Index="[82]" Value="-17026"/>
+<Element Index="[83]" Value="15701"/>
 <Element Index="[84]" Value="0"/>
 <Element Index="[85]" Value="0"/>
 <Element Index="[86]" Value="0"/>
@@ -2780,16 +2780,16 @@
 <Element Index="[109]" Value="0"/>
 <Element Index="[110]" Value="0"/>
 <Element Index="[111]" Value="0"/>
-<Element Index="[112]" Value="-17023"/>
-<Element Index="[113]" Value="602"/>
+<Element Index="[112]" Value="-17026"/>
+<Element Index="[113]" Value="25267"/>
 <Element Index="[114]" Value="17037"/>
 <Element Index="[115]" Value="11469"/>
 <Element Index="[116]" Value="0"/>
 <Element Index="[117]" Value="0"/>
 <Element Index="[118]" Value="0"/>
 <Element Index="[119]" Value="0"/>
-<Element Index="[120]" Value="-17025"/>
-<Element Index="[121]" Value="26692"/>
+<Element Index="[120]" Value="-17026"/>
+<Element Index="[121]" Value="15701"/>
 </ArrayMember>
 </Structure>
 </Data>
@@ -3836,7 +3836,7 @@
 <Data Format="Decorated">
 <Structure DataType="AB:ETHERNET_MODULE_INT_244Bytes:I:0">
 <ArrayMember Name="Data" DataType="INT" Dimensions="122" Radix="Decimal">
-<Element Index="[0]" Value="258"/>
+<Element Index="[0]" Value="16642"/>
 <Element Index="[1]" Value="1024"/>
 <Element Index="[2]" Value="0"/>
 <Element Index="[3]" Value="0"/>
@@ -3869,11 +3869,11 @@
 <Element Index="[30]" Value="-3"/>
 <Element Index="[31]" Value="0"/>
 <Element Index="[32]" Value="0"/>
-<Element Index="[33]" Value="5458"/>
+<Element Index="[33]" Value="5466"/>
 <Element Index="[34]" Value="0"/>
 <Element Index="[35]" Value="0"/>
 <Element Index="[36]" Value="0"/>
-<Element Index="[37]" Value="5458"/>
+<Element Index="[37]" Value="5466"/>
 <Element Index="[38]" Value="0"/>
 <Element Index="[39]" Value="0"/>
 <Element Index="[40]" Value="0"/>
@@ -3893,7 +3893,7 @@
 <Element Index="[54]" Value="0"/>
 <Element Index="[55]" Value="0"/>
 <Element Index="[56]" Value="0"/>
-<Element Index="[57]" Value="-16136"/>
+<Element Index="[57]" Value="-16017"/>
 <Element Index="[58]" Value="3"/>
 <Element Index="[59]" Value="269"/>
 <Element Index="[60]" Value="0"/>
@@ -3909,7 +3909,7 @@
 <Element Index="[70]" Value="1093"/>
 <Element Index="[71]" Value="2026"/>
 <Element Index="[72]" Value="2322"/>
-<Element Index="[73]" Value="2591"/>
+<Element Index="[73]" Value="2826"/>
 <Element Index="[74]" Value="0"/>
 <Element Index="[75]" Value="0"/>
 <Element Index="[76]" Value="0"/>
@@ -3919,7 +3919,7 @@
 <Element Index="[80]" Value="0"/>
 <Element Index="[81]" Value="0"/>
 <Element Index="[82]" Value="16428"/>
-<Element Index="[83]" Value="10549"/>
+<Element Index="[83]" Value="25891"/>
 <Element Index="[84]" Value="0"/>
 <Element Index="[85]" Value="0"/>
 <Element Index="[86]" Value="0"/>
@@ -3949,7 +3949,7 @@
 <Element Index="[110]" Value="0"/>
 <Element Index="[111]" Value="0"/>
 <Element Index="[112]" Value="16428"/>
-<Element Index="[113]" Value="10515"/>
+<Element Index="[113]" Value="25540"/>
 <Element Index="[114]" Value="17037"/>
 <Element Index="[115]" Value="11469"/>
 <Element Index="[116]" Value="0"/>
@@ -3957,7 +3957,7 @@
 <Element Index="[118]" Value="0"/>
 <Element Index="[119]" Value="0"/>
 <Element Index="[120]" Value="16428"/>
-<Element Index="[121]" Value="10549"/>
+<Element Index="[121]" Value="25891"/>
 </ArrayMember>
 </Structure>
 </Data>
@@ -4223,7 +4223,7 @@
 <Structure DataType="AB:1734_IE8:I:0">
 <DataValueMember Name="Fault" DataType="DINT" Radix="Binary" Value="2#0000_0000_0000_0000_0000_0000_0000_0000"/>
 <DataValueMember Name="Ch0Data" DataType="INT" Radix="Decimal" Value="61"/>
-<DataValueMember Name="Ch1Data" DataType="INT" Radix="Decimal" Value="44"/>
+<DataValueMember Name="Ch1Data" DataType="INT" Radix="Decimal" Value="41"/>
 <DataValueMember Name="Ch2Data" DataType="INT" Radix="Decimal" Value="22"/>
 <DataValueMember Name="Ch3Data" DataType="INT" Radix="Decimal" Value="-11"/>
 <DataValueMember Name="Ch4Data" DataType="INT" Radix="Decimal" Value="-8"/>
@@ -7314,10 +7314,10 @@
 <![CDATA[Bronkhorst Data Index]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[108]]>
+<![CDATA[260]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="108"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="260"/>
 </Data>
 </Tag>
 <Tag Name="Device" TagType="Base" DataType="Device" Dimensions="20" Constant="false" ExternalAccess="Read/Write">
@@ -7369,11 +7369,11 @@
 <![CDATA[[[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],0.00000000e+000,16,1.06000000e+001,0.00000000e+000,0,0,0,0.00000000e+000,[482253,288000000,217779
+		],0.00000000e+000,0,1.06000000e+001,0.00000000e+000,0,0,0,0.00000000e+000,[482253,288000000,217779
 		],[622748,288000000,20003],[482253,288000000,36646910],[2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0],16384,[482253,1000,0],1,0,0.00000000e+000
 		,0,16384000,1,[3,1,10000,0,0,0,2583057,25088,981668463,0,0,1],3,0.00000000e+000,[267916,1000,0],0.00000000e+000
-		,0,16384,1,22],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0,16384,1,0],[0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],0,[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
@@ -7532,7 +7532,7 @@
 <DataValueMember Name="AutoMan" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AutoRun" DataType="BOOL" Value="0"/>
 <DataValueMember Name="ManualRun" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Interlock" DataType="BOOL" Value="1"/>
+<DataValueMember Name="Interlock" DataType="BOOL" Value="0"/>
 <DataValueMember Name="Output" DataType="BOOL" Value="0"/>
 <DataValueMember Name="SP_HMI" DataType="REAL" Radix="Float" Value="10.6"/>
 <DataValueMember Name="SP_W" DataType="REAL" Radix="Float" Value="0.0"/>
@@ -7648,7 +7648,7 @@
 <DataValueMember Name="HMI_DeviceReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="VFDEntryStatus" DataType="DINT" Radix="Decimal" Value="16384"/>
 <DataValueMember Name="VFDCommsOK" DataType="BOOL" Value="1"/>
-<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="22"/>
+<DataValueMember Name="InterlockID" DataType="DINT" Radix="Decimal" Value="0"/>
 </Structure>
 </Element>
 <Element Index="[1]">
@@ -10531,10 +10531,10 @@
 <![CDATA[The index of the current device being processed]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[14]]>
+<![CDATA[11]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="14"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="11"/>
 </Data>
 </Tag>
 <Tag Name="DoseCounter" TagType="Base" DataType="COUNTER" Constant="false" ExternalAccess="Read/Write">
@@ -10631,6 +10631,23 @@
 </Data>
 <Data Format="Decorated">
 <DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="EstopFalutResetTOF" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Timer to hold reset bit to allow all drives to reset]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[[3558243,500,502]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="500"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="502"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
 </Data>
 </Tag>
 <Tag Name="EStopResetArmed" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -10824,19 +10841,19 @@
 </Tag>
 <Tag Name="FT103B" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0.00000000e+000,7.82630463e+001,0.00000000e+000,2.64849987e+001,9.99900000e+003,[6,'FT-103$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+<![CDATA[[0.00000000e+000,6.45017700e+001,0.00000000e+000,2.65922031e+001,9.99900000e+003,[6,'FT-103$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],13,[14,'M55-RGD-25-0-S$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[10,'M22213015A$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],1.00000006e+003,0,2.00000000e+002,0.00000000e+000,3,40,111,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0
+		],1.00000006e+003,0,2.00000000e+002,0.00000000e+000,3,40,65,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0,2#0],0,[0,0,0],0,0,1.37946469e+005,2,2.00000000e+001,2000,2,[291689,2000,0],32,0,3,108]]]>
+		,2#0,2#0,2#0],0,[0,0,0],0,0,1.40436109e+005,2,2.00000000e+001,2000,2,[291689,2000,0],64,0,3,92]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="BronkhorstFlowMeter">
 <DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="78.26305"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="64.50177"/>
 <DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="26.484999"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="26.592203"/>
 <DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="9999.0"/>
 <StructureMember Name="Usertag" DataType="STRING">
 <DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="6"/>
@@ -10871,7 +10888,7 @@
 <DataValueMember Name="Running" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="40"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="111"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="65"/>
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -10938,7 +10955,7 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="137946.47"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="140436.11"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="1"/>
 <DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
@@ -10956,13 +10973,13 @@
 <DataValueMember Name="TotalResetDone" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalResetError" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmResetCmd" DataType="BOOL" Value="0"/>
-<DataValueMember Name="AlarmResetDone" DataType="BOOL" Value="1"/>
-<DataValueMember Name="AlarmResetError" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmResetDone" DataType="BOOL" Value="0"/>
+<DataValueMember Name="AlarmResetError" DataType="BOOL" Value="1"/>
 <DataValueMember Name="TotalResetAttempts" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="CommOK" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataValid" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataStale" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="108"/>
+<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="92"/>
 </Structure>
 </Data>
 </Tag>
@@ -11113,19 +11130,19 @@
 </Tag>
 <Tag Name="FT104B" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0.00000000e+000,6.15686607e+001,0.00000000e+000,2.67674370e+001,9.99899900e+003,[16,'FT-104          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+<![CDATA[[0.00000000e+000,6.57324753e+001,0.00000000e+000,2.69257755e+001,9.99899900e+003,[16,'FT-104          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],14,[14,'M55-RGD-25-0-S$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[10,'M22213015C$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],1.00000000e+004,0,1.00000000e+003,0.00000000e+000,1,0,96,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
+		],1.00000000e+004,0,1.00000000e+003,0.00000000e+000,1,0,48,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,1.48348875e+005,2,2.00000000e+001,2000,1,[3503311,1000,0],0,0,3,140]]]>
+		,2#0,2#0],0,[0,0,0],0,0,1.50693047e+005,2,2.00000000e+001,2000,1,[3503311,1000,0],0,0,3,218]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="BronkhorstFlowMeter">
 <DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="61.56866"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="65.732475"/>
 <DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="26.767437"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="26.925776"/>
 <DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="9998.999"/>
 <StructureMember Name="Usertag" DataType="STRING">
 <DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="16"/>
@@ -11160,7 +11177,7 @@
 <DataValueMember Name="Running" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="96"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="48"/>
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -11227,7 +11244,7 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="148348.88"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="150693.05"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="1"/>
 <DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
@@ -11251,7 +11268,7 @@
 <DataValueMember Name="CommOK" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataValid" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataStale" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="140"/>
+<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="218"/>
 </Structure>
 </Data>
 </Tag>
@@ -11402,20 +11419,20 @@
 </Tag>
 <Tag Name="FT105B" TagType="Base" DataType="BronkhorstFlowMeter" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[0.00000000e+000,5.93636990e-001,0.00000000e+000,3.33305130e+001,9.99569336e+002,[16,'FT-105          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+<![CDATA[[0.00000000e+000,5.94721437e-001,0.00000000e+000,3.35066872e+001,9.99724426e+002,[16,'FT-105          $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],15,[14,'M14-RGD-22-0-S$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
 		],[10,'M20210127A$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
-		],2.02799988e+002,0,1.50000000e+002,0.00000000e+000,1,0,48,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
+		],2.02799988e+002,0,1.50000000e+002,0.00000000e+000,1,0,47,0.00000000e+000,[0,0,0],[0,0,0],[0,0,0],[2#0,2#0,2#0
 		,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0,2#0
-		,2#0,2#0],0,[0,0,0],0,0,4.48383008e+003,2,2.00000000e+001,2000,1,[1158617,1000,0],64,0,3,295]]]>
+		,2#0,2#0],0,[0,0,0],0,0,4.50660986e+003,2,2.00000000e+001,2000,1,[1158617,1000,0],64,0,3,93]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="BronkhorstFlowMeter">
 <DataValueMember Name="SP_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="0.593637"/>
+<DataValueMember Name="PV_R" DataType="REAL" Radix="Float" Value="0.59472144"/>
 <DataValueMember Name="OT_R" DataType="REAL" Radix="Float" Value="0.0"/>
-<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="33.330513"/>
-<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="999.56934"/>
+<DataValueMember Name="TempC" DataType="REAL" Radix="Float" Value="33.506687"/>
+<DataValueMember Name="Density" DataType="REAL" Radix="Float" Value="999.7244"/>
 <StructureMember Name="Usertag" DataType="STRING">
 <DataValueMember Name="LEN" DataType="DINT" Radix="Decimal" Value="16"/>
 <DataValueMember Name="DATA" DataType="STRING" Radix="ASCII">
@@ -11449,7 +11466,7 @@
 <DataValueMember Name="Running" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="AlarmID" DataType="INT" Radix="Decimal" Value="0"/>
-<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="48"/>
+<DataValueMember Name="ReadTime" DataType="INT" Radix="Decimal" Value="47"/>
 <DataValueMember Name="DevPct" DataType="REAL" Radix="Float" Value="0.0"/>
 <StructureMember Name="CycleTime" DataType="TIMER">
 <DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
@@ -11516,7 +11533,7 @@
 </StructureMember>
 <DataValueMember Name="StartDelayms" DataType="DINT" Radix="Decimal" Value="0"/>
 <DataValueMember Name="TimeRunStart" DataType="BOOL" Value="0"/>
-<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="4483.83"/>
+<DataValueMember Name="Totalizer" DataType="REAL" Radix="Float" Value="4506.61"/>
 <DataValueMember Name="TotalizerReset" DataType="BOOL" Value="0"/>
 <DataValueMember Name="TotalizerEnable" DataType="BOOL" Value="1"/>
 <DataValueMember Name="HighPressureLimit_HMI" DataType="REAL" Radix="Float" Value="20.0"/>
@@ -11540,7 +11557,7 @@
 <DataValueMember Name="CommOK" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataValid" DataType="BOOL" Value="1"/>
 <DataValueMember Name="DataStale" DataType="BOOL" Value="0"/>
-<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="295"/>
+<DataValueMember Name="DataAgeMs" DataType="DINT" Radix="Decimal" Value="93"/>
 </Structure>
 </Data>
 </Tag>
@@ -12845,10 +12862,10 @@ Int - 1 / Ext - 0]]>
 <![CDATA[Bronkhorst Real Result Index]]>
 </Description>
 <Data Format="L5K">
-<![CDATA[14]]>
+<![CDATA[33]]>
 </Data>
 <Data Format="Decorated">
-<DataValue DataType="DINT" Radix="Decimal" Value="14"/>
+<DataValue DataType="DINT" Radix="Decimal" Value="33"/>
 </Data>
 </Tag>
 <Tag Name="rms" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
@@ -13011,18 +13028,18 @@ Int - 1 / Ext - 0]]>
 </Comment>
 </Comments>
 <Data Format="L5K">
-<![CDATA[[-6.29882813e-002,2.13235587e-041,0.00000000e+000,1.80000000e+001,2.00000000e+000,0.00000000e+000
+<![CDATA[[-6.20117188e-002,2.20017872e-041,0.00000000e+000,1.80000000e+001,2.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,6.90000000e+001,1.68637878e+003,7.12111854e-041
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,-6.29882813e-002,7.05045929e+001,1.60714921e-041
-		,0.00000000e+000,-6.29882813e-002,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,-6.20117188e-002,7.08873900e+001,1.60714921e-041
+		,0.00000000e+000,-6.20117188e-002,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000]]]>
 </Data>
 <Data Format="Decorated">
 <Array DataType="REAL" Dimensions="40" Radix="Float">
-<Element Index="[0]" Value="-0.06298828"/>
-<Element Index="[1]" Value="2.13235587e-041"/>
+<Element Index="[0]" Value="-0.06201172"/>
+<Element Index="[1]" Value="2.20017872e-041"/>
 <Element Index="[2]" Value="0.0"/>
 <Element Index="[3]" Value="18.0"/>
 <Element Index="[4]" Value="2.0"/>
@@ -13036,11 +13053,11 @@ Int - 1 / Ext - 0]]>
 <Element Index="[12]" Value="0.0"/>
 <Element Index="[13]" Value="0.0"/>
 <Element Index="[14]" Value="0.0"/>
-<Element Index="[15]" Value="-0.06298828"/>
-<Element Index="[16]" Value="70.50459"/>
+<Element Index="[15]" Value="-0.06201172"/>
+<Element Index="[16]" Value="70.88739"/>
 <Element Index="[17]" Value="1.60714921e-041"/>
 <Element Index="[18]" Value="0.0"/>
-<Element Index="[19]" Value="-0.06298828"/>
+<Element Index="[19]" Value="-0.06201172"/>
 <Element Index="[20]" Value="0.0"/>
 <Element Index="[21]" Value="0.0"/>
 <Element Index="[22]" Value="0.0"/>
@@ -13116,9 +13133,9 @@ Int - 1 / Ext - 0]]>
 </Tag>
 <Tag Name="Thayer2Data" TagType="Base" DataType="REAL" Dimensions="40" Radix="Float" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[2.68750000e+000,1.68870478e-041,0.00000000e+000,1.80000000e+001,0.00000000e+000,0.00000000e+000
+<![CDATA[[2.68750000e+000,3.86394039e-041,0.00000000e+000,1.80000000e+001,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,3.08750000e+001,1.80763416e+003,5.26650000e-041
-		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.68750000e+000,7.05662842e+001,1.60714921e-041
+		,0.00000000e+000,0.00000000e+000,0.00000000e+000,2.68750000e+000,7.07113724e+001,1.60714921e-041
 		,0.00000000e+000,2.68750000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
 		,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
@@ -13127,7 +13144,7 @@ Int - 1 / Ext - 0]]>
 <Data Format="Decorated">
 <Array DataType="REAL" Dimensions="40" Radix="Float">
 <Element Index="[0]" Value="2.6875"/>
-<Element Index="[1]" Value="1.68870478e-041"/>
+<Element Index="[1]" Value="3.86394039e-041"/>
 <Element Index="[2]" Value="0.0"/>
 <Element Index="[3]" Value="18.0"/>
 <Element Index="[4]" Value="0.0"/>
@@ -13142,7 +13159,7 @@ Int - 1 / Ext - 0]]>
 <Element Index="[13]" Value="0.0"/>
 <Element Index="[14]" Value="0.0"/>
 <Element Index="[15]" Value="2.6875"/>
-<Element Index="[16]" Value="70.566284"/>
+<Element Index="[16]" Value="70.71137"/>
 <Element Index="[17]" Value="1.60714921e-041"/>
 <Element Index="[18]" Value="0.0"/>
 <Element Index="[19]" Value="2.6875"/>
@@ -13518,7 +13535,7 @@ Int - 1 / Ext - 0]]>
 <Tag Name="VFD_Panel_Safety_WaitingForReset" TagType="Alias" Radix="Decimal" AliasFor="XS26_VFD_Cabinet_Safety_Controller:I1.Data[1].5" ExternalAccess="Read/Write"/>
 <Tag Name="YellowFlashOff" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[903319,500,0]]]>
+<![CDATA[[3444883,500,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="TIMER">
@@ -13532,7 +13549,7 @@ Int - 1 / Ext - 0]]>
 </Tag>
 <Tag Name="YellowFlashOn" TagType="Base" DataType="TIMER" Constant="false" ExternalAccess="Read/Write">
 <Data Format="L5K">
-<![CDATA[[903319,500,0]]]>
+<![CDATA[[3444883,500,0]]]>
 </Data>
 <Data Format="Decorated">
 <Structure DataType="TIMER">
@@ -13967,7 +13984,7 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <![CDATA[Reset all device interlocks from the reset button the on the VFD panel (EstopResetPulse) when no E-stop is active]]>
 </Comment>
 <Text>
-<![CDATA[[XIC(HMI_InterlockResetAll) ,XIC(EStopResetPulse) ]XIO(EstopActive)[OTU(EStopResetRequired) ,MOV(0,Device[dNum].InterlockID) ,OTU(Device[dNum].Interlock) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ,OTE(MX201_LowerHowesVFD:O.ClearFaults) ];]]>
+<![CDATA[[XIC(HMI_InterlockResetAll) ,XIC(EstopFalutResetTOF.DN) ]XIO(EstopActive)[OTU(EStopResetRequired) ,MOV(0,Device[dNum].InterlockID) ,OTU(Device[dNum].Interlock) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ,OTE(MX201_LowerHowesVFD:O.ClearFaults) ];]]>
 </Text>
 </Rung>
 <Rung Number="7" Type="N">
@@ -14086,11 +14103,6 @@ Only copy 3 long in  = 9  sints addresses (starting at 64 ) - these are 3 long i
 <Rung Number="23" Type="N">
 <Text>
 <![CDATA[XIC(alwaysOFF)OTE(TestBit1);]]>
-</Text>
-</Rung>
-<Rung Number="24" Type="N">
-<Text>
-<![CDATA[XIC(MX101_Clr_VFd_Faults)OTE(MX101_UpperHowesVFD:O.ClearFaults);]]>
 </Text>
 </Rung>
 </RLLContent>
@@ -14231,7 +14243,7 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Rung>
 <Rung Number="2" Type="N">
 <Text>
-<![CDATA[XIC(Device[0].HMI_DeviceReset)[OTU(MX101.LidInterlock) ,OTU(MX101.DevErrorInterlock) ,OTU(MX101.VFDCommsIntlk) ,OTU(MX101.VFDFaultIntlk) ,OTU(MX101.VFDNotReadyIntlk) ,OTU(Device[0].Interlock) ,MOV(0,Device[0].InterlockID) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ];]]>
+<![CDATA[XIC(Device[0].HMI_DeviceReset)[OTU(MX101.LidInterlock) ,OTU(MX101.DevErrorInterlock) ,OTU(MX101.VFDCommsIntlk) ,OTU(MX101.VFDFaultIntlk) ,OTU(MX101.VFDNotReadyIntlk) ,OTU(Device[0].Interlock) ,MOV(0,Device[0].InterlockID) ];]]>
 </Text>
 </Rung>
 <Rung Number="3" Type="N">
@@ -14391,11 +14403,21 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 </Text>
 </Rung>
 <Rung Number="26" Type="N">
+<Text>
+<![CDATA[XIC(EStopResetPulse)TOF(EstopFalutResetTOF,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="27" Type="N">
 <Comment>
 <![CDATA[Disarm]]>
 </Comment>
 <Text>
-<![CDATA[XIC(EStopResetPulse)[OTU(EStopResetArmed) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ];]]>
+<![CDATA[XIC(EStopResetPulse)OTU(EStopResetArmed);]]>
+</Text>
+</Rung>
+<Rung Number="28" Type="N">
+<Text>
+<![CDATA[XIC(EstopFalutResetTOF.DN)[OTE(MX201_LowerHowesVFD:O.ClearFaults) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ];]]>
 </Text>
 </Rung>
 </RLLContent>
@@ -14759,7 +14781,7 @@ Reset Thayer 2 Totalizer 1 on Dose Start or Total Reset from HMI]]>
 <![CDATA[Reset interlock on all system reset]]>
 </Comment>
 <Text>
-<![CDATA[XIC(HMI_AllReset)[OTU(Device[0].Interlock) ,OTE(MX101_UpperHowesVFD:O.ClearFaults) ];]]>
+<![CDATA[XIC(HMI_AllReset)OTU(Device[0].Interlock);]]>
 </Text>
 </Rung>
 </RLLContent>
