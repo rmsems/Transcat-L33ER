@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Logic to Run system in Auto using a state machine-->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="AutoStateMachine" TargetType="Routine" TargetSubType="RLL" ContainsContext="true" ExportDate="Tue Sep 22 18:32:16 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="Transcat_L33ER">
+<DataTypes Use="Context">
+<DataType Name="Recipe" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Defines the active process recipe, including recipe identification, validity status, and recipe-specific operating parameters for all devices.]]>
+</Description>
+<Members>
+<Member Name="RecipeID" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Numeric identifier for loaded recipe]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZRecipe1" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Valid" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZRecipe1" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Indicates a valid recipe/setup has been loaded]]>
+</Description>
+</Member>
+<Member Name="Device" DataType="RecipeDevice" Dimension="20" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Recipe settings for each device]]>
+</Description>
+</Member>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="RecipeDevice"/>
+</Dependencies>
+</DataType>
+<DataType Name="RecipeDevice" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Defines recipe-specific operating parameters for one device, including Auto selection, setpoint, start delay, run type, run target, and maximum run time.**]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZRecipeDevi0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="AutoMode" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZRecipeDevi0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Device is selected to participate in Auto]]>
+</Description>
+</Member>
+<Member Name="SP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Operating setpoint for this device]]>
+</Description>
+</Member>
+<Member Name="StartDelaySec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Delay after Auto RUNNING before device starts]]>
+</Description>
+</Member>
+<Member Name="RunType" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[0=Open, 1=Timed, 2=Amount]]>
+</Description>
+</Member>
+<Member Name="RunTarget" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Target time or amount, depending on RunType]]>
+</Description>
+</Member>
+<Member Name="MaxRunTimeSec" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Maximum allowed run time regardless of RunType]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+<Tags Use="Context">
+<Tag Name="ActiveRecipe" TagType="Base" DataType="Recipe" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Active process recipe downloaded from the HMI recipe system and used by the PLC for automatic operation.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[[0,0,[[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000
+		,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0
+		,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000
+		,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0
+		,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000
+		],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000
+		,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0
+		,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000
+		,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0
+		,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000
+		],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000
+		,0.00000000e+000]]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="Recipe">
+<DataValueMember Name="RecipeID" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="Valid" DataType="BOOL" Value="0"/>
+<ArrayMember Name="Device" DataType="RecipeDevice" Dimensions="20">
+<Element Index="[0]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[11]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[12]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[13]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[14]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[15]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[16]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[17]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[18]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[19]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+</ArrayMember>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="Auto_Run_All_Interlock" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bit to interlock all devices running in Auto]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AutoRunRequest" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[True when the automatic state machine is in RUNNING and automatic device operation is requested.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AutoState" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Current automatic process state. 0=IDLE, 10=ARMED, 20=RUNNING, 30=INTERLOCKED]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_AutoStart" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Starts all devices in AUTO]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_AutoStop" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Stops all devices in AUTO]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="HMI_ProcessReset" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bit to clear the process hold/inteerlock when all other device interlocks are cleared]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+</Tags>
+<Programs Use="Context">
+<Program Use="Context" Name="MainProgram">
+<Routines Use="Context">
+<Routine Use="Target" Name="AutoStateMachine" Type="RLL">
+<Description>
+<![CDATA[Logic to Run system in Auto using a state machine]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Auto State Initialization — Forces AutoState to IDLE if the state value is not one of the accepted valued 0, 10, 20, 30]]>
+</Comment>
+<Text>
+<![CDATA[[NEQ(AutoState,0) ,NEQ(AutoState,10) ,NEQ(AutoState,20) ,NEQ(AutoState,30) ]MOV(0,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[IDLE to ARMED — Transitions the automatic process from IDLE to ARMED when a valid active recipe is available.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,0)XIC(ActiveRecipe.Valid)MOV(10,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[ARMED to IDLE — Returns the automatic process to IDLE when the active recipe is cleared or becomes invalid.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,10)XIO(ActiveRecipe.Valid)MOV(0,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[ARMED to RUNNING — Starts automatic operation when a valid recipe is armed and the operator presses Auto Start.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,10)XIC(ActiveRecipe.Valid)XIC(HMI_AutoStart)MOV(20,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[RUNNING to ARMED — Stops automatic operation and returns to ARMED when the operator presses Auto Stop. The active recipe remains loaded.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,20)XIC(HMI_AutoStop)MOV(10,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Comment>
+<![CDATA[RUNNING to INTERLOCKED — Transitions automatic operation to INTERLOCKED when an active Auto device interlock causes the process-level Auto interlock.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,20)XIC(Auto_Run_All_Interlock)MOV(30,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[INTERLOCKED to ARMED — Returns automatic operation to ARMED after the process interlock is cleared and the operator acknowledges the condition with Process Reset. A new Auto Start is required to resume operation.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,30)XIO(Auto_Run_All_Interlock)XIC(HMI_ProcessReset)MOV(10,AutoState);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[Automatic Run Request — Enables automatic device operation while the Auto state machine is in the RUNNING state.]]>
+</Comment>
+<Text>
+<![CDATA[EQU(AutoState,20)OTE(AutoRunRequest);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>
