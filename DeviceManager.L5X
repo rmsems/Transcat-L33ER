@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--Loop through all devices each scan-->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="DeviceManager" TargetType="Routine" TargetSubType="RLL" ContainsContext="true" ExportDate="Wed Sep 23 15:24:53 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans LogicalHierarchy">
+<Controller Use="Context" Name="Transcat_L33ER">
+<DataTypes Use="Context">
+</DataTypes>
+<Tags Use="Context">
+<Tag Name="AllCampaignDevicesComplete" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[True when all devices selected in the active recipe that require automatic completion have reached their campaign target.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyAutoRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bit that in on if ANY device is placed into Auto run (to signal pre-start beed)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyAutoRunFlag" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[A flag that indicates if any device is in Auto Run (used with pre-start beep logic)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyManRunFlag" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[A flag that indicates if any device is in Manual  Run (used with pre-start beep logic)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="AnyManualRun" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bit that in on if ANY device is placed into manual run (to signal pre-start beed)]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="dNum" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[The index of the current device being processed]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[8]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="8"/>
+</Data>
+</Tag>
+</Tags>
+<Programs Use="Context">
+<Program Use="Context" Name="MainProgram">
+<Routines Use="Context">
+<Routine Use="Reference" Name="DeviceLogic">
+</Routine>
+<Routine Use="Target" Name="DeviceManager" Type="RLL">
+<Description>
+<![CDATA[Loop through all devices each scan]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[clear the temporary scan flags:]]>
+</Comment>
+<Text>
+<![CDATA[[OTU(AnyManRunFlag) ,OTU(AnyAutoRunFlag) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[Campaign Completion Initialization — Assume all target-based recipe devices are complete before scanning the active recipe. RecipeDeviceLogic clears this status if any selected device has not reached its campaign target.]]>
+</Comment>
+<Text>
+<![CDATA[OTL(AllCampaignDevicesComplete);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[This for loop call Device Logic 14 times (0 - 13) so each device is processed once per PLC scan
+]]>
+</Comment>
+<Text>
+<![CDATA[FOR(DeviceLogic,dNum,0,13,1);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Pre-Beep Manual Start behaviour flag rest - If AnyManRunFlag or AnyAutoRunFlag is not set - unlatch the corresponding AnyManualRun or AnyAutoRun bits - this is all for pre-start beep control (so the system only beeps when something is starting, not each time a new device starts) - 
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(AnyManRunFlag)OTU(AnyManualRun);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[Pre-Beep Auto
+ Start behaviour flag rest If AnyManRunFlag or AnyAutoRunFlag is not set - unlatch the corresponding AnyManualRun or AnyAutoRun bits - this is all for pre-start beep control (so the system only beeps when something is starting, not each time a new device starts) - 
+]]>
+</Comment>
+<Text>
+<![CDATA[XIO(AnyAutoRunFlag)OTU(AnyAutoRun);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>

@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!--validated and prepares ActiveRecipe-->
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="32.02" TargetName="RecipeManager" TargetType="Routine" TargetSubType="RLL" ContainsContext="true" ExportDate="Wed Sep 23 15:31:32 2026" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans LogicalHierarchy">
+<Controller Use="Context" Name="Transcat_L33ER">
+<DataTypes Use="Context">
+<DataType Name="Recipe" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Defines the active process recipe, including recipe identification, validity status, and recipe-specific operating parameters for all devices.]]>
+</Description>
+<Members>
+<Member Name="RecipeID" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Numeric identifier for loaded recipe]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZRecipe1" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Valid" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZRecipe1" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Indicates a valid recipe/setup has been loaded]]>
+</Description>
+</Member>
+<Member Name="Device" DataType="RecipeDevice" Dimension="20" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Recipe settings for each device]]>
+</Description>
+</Member>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="RecipeDevice"/>
+</Dependencies>
+</DataType>
+<DataType Name="RecipeDevice" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[Defines recipe-specific operating parameters for one device, including Auto selection, setpoint, start delay, run type, run target, and maximum run time.**]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZRecipeDevi0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="AutoMode" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZRecipeDevi0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Device is selected to participate in Auto]]>
+</Description>
+</Member>
+<Member Name="SP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Operating setpoint for this device]]>
+</Description>
+</Member>
+<Member Name="StartDelaySec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Delay after Auto RUNNING before device starts]]>
+</Description>
+</Member>
+<Member Name="RunType" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[0=Open, 1=Timed, 2=Amount]]>
+</Description>
+</Member>
+<Member Name="RunTarget" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Target time or amount, depending on RunType]]>
+</Description>
+</Member>
+<Member Name="MaxRunTimeSec" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Maximum allowed run time regardless of RunType]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+<Tags Use="Context">
+<Tag Name="ActiveRecipe" TagType="Base" DataType="Recipe" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Active process recipe downloaded from the HMI recipe system and used by the PLC for automatic operation.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[[1,1,[[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000
+		,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0
+		,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000
+		,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[1
+		,2.01000000e+002,5,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000
+		],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000
+		,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0
+		,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000
+		,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0
+		,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000
+		],[0,0.00000000e+000,0,0,0.00000000e+000,0.00000000e+000],[0,0.00000000e+000,0,0,0.00000000e+000
+		,0.00000000e+000]]]]]>
+</Data>
+<Data Format="Decorated">
+<Structure DataType="Recipe">
+<DataValueMember Name="RecipeID" DataType="DINT" Radix="Decimal" Value="1"/>
+<DataValueMember Name="Valid" DataType="BOOL" Value="1"/>
+<ArrayMember Name="Device" DataType="RecipeDevice" Dimensions="20">
+<Element Index="[0]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[1]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[2]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[3]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[4]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[5]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[6]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[7]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="1"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="201.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="5"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[8]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[9]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[10]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[11]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[12]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[13]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[14]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[15]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[16]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[17]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[18]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+<Element Index="[19]">
+<Structure DataType="RecipeDevice">
+<DataValueMember Name="AutoMode" DataType="BOOL" Value="0"/>
+<DataValueMember Name="SP" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="StartDelaySec" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunType" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="RunTarget" DataType="REAL" Radix="Float" Value="0.0"/>
+<DataValueMember Name="MaxRunTimeSec" DataType="REAL" Radix="Float" Value="0.0"/>
+</Structure>
+</Element>
+</ArrayMember>
+</Structure>
+</Data>
+</Tag>
+<Tag Name="AllCampaignDevicesComplete" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[True when all devices selected in the active recipe that require automatic completion have reached their campaign target.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[0]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</Data>
+</Tag>
+<Tag Name="RecipeAnyDeviceSelected" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[True when at least one device is selected for automatic operation in the active recipe.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="RecipeParametersValid" TagType="Base" DataType="BOOL" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[True when all selected devices contain valid recipe operating parameters.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[1]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="1"/>
+</Data>
+</Tag>
+<Tag Name="rNum" TagType="Base" DataType="DINT" Radix="Decimal" Constant="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Index used by RecipeManager to process active recipe device parameters.]]>
+</Description>
+<Data Format="L5K">
+<![CDATA[15]]>
+</Data>
+<Data Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="15"/>
+</Data>
+</Tag>
+</Tags>
+<Programs Use="Context">
+<Program Use="Context" Name="MainProgram">
+<Routines Use="Context">
+<Routine Use="Reference" Name="RecipeDeviceLogic">
+</Routine>
+<Routine Use="Target" Name="RecipeManager" Type="RLL">
+<Description>
+<![CDATA[validated and prepares ActiveRecipe]]>
+</Description>
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[Recipe Validation Initialization — Clears the device-selected result and initializes parameter validation true before evaluating all active recipe devices.]]>
+</Comment>
+<Text>
+<![CDATA[[OTU(RecipeAnyDeviceSelected) ,OTL(RecipeParametersValid) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Comment>
+<![CDATA[Campaign Completion Initialization — Assume all target-based recipe devices are complete before scanning the active recipe. RecipeDeviceLogic clears this status if any selected device has not reached its campaign target.]]>
+</Comment>
+<Text>
+<![CDATA[OTL(AllCampaignDevicesComplete);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[Active Recipe Device Processing — Executes RecipeDeviceLogic once for each active device to evaluate recipe selection and validate device recipe parameters.]]>
+</Comment>
+<Text>
+<![CDATA[FOR(RecipeDeviceLogic,rNum,0,14,1);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Comment>
+<![CDATA[Active Recipe Validation — Sets the active recipe valid when it has a valid RecipeID, at least one device selected for Auto, and all selected device parameters pass validation.]]>
+</Comment>
+<Text>
+<![CDATA[GRT(ActiveRecipe.RecipeID,0)XIC(RecipeAnyDeviceSelected)XIC(RecipeParametersValid)OTE(ActiveRecipe.Valid);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</Program>
+</Programs>
+</Controller>
+</RSLogix5000Content>
